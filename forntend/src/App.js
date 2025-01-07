@@ -18,6 +18,11 @@ import EmployeeList from "./component_web/EmployeeList";
 import EmployeD from "./Employee/EmployeD";
 import Emphire from "./Hireprocess/Emphire";
 
+// css
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
+
 const AppWrapper = () => {
   const location = useLocation();
   const isAdminRoute = location.pathname.toLowerCase().startsWith("/admin");
