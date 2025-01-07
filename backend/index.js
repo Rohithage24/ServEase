@@ -30,6 +30,10 @@ async function main() {
 // user all operations
 server.post("/login/", userjs.getuser);
 server.post("/user", userjs.adduser);
+server.get("/userall", userjs.getAllUsers);
+server.delete("/deleteuser/:id", userjs.deleteuser);
+
+
 
 
 // Employee all operations
