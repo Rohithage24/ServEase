@@ -1,0 +1,115 @@
+/* Admin Page Styles */
+.admin-page {
+    padding: 2rem;
+    background-color: #f4f4f4;
+    min-height: calc(100vh - 120px);
+    /* Adjust for header and footer */
+}
+
+.admin-title {
+    font-size: 2rem;
+    text-align: center;
+    color: #003366;
+    margin-bottom: 1.5rem;
+}
+
+.admin-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.admin-tabs button {
+    background-color: #003366;
+    color: #ffffff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.admin-tabs button.active,
+.admin-tabs button:hover {
+    background-color: #ffd700;
+    /* Gold */
+    color: #003366;
+    /* Dark blue */
+}
+
+.admin-content {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.link-container {
+    display: flex;
+    justify-content: flex-end; /* Aligns the content to the right */
+    width: 100%; /* Ensures the container takes full width */
+  }
+
+  /* Services Management Component */
+
+
+  /* General Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Header Styling */
+thead {
+    background-color: #007BFF;
+    color: white;
+}
+
+thead th {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Table Body Styling */
+tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+tbody tr:last-of-type {
+    border-bottom: 2px solid #007BFF;
+}
+
+tbody td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+/* Hover Effect on Rows */
+tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* Date Column Styling */
+tbody td:last-child {
+    font-style: italic;
+    color: #555;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+}

@@ -1,0 +1,183 @@
+/* Navbar Styles */
+.header_section {
+    background-color: #020230;
+    padding: 10px 0;
+  }
+  
+  .navbar-brand span {
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+  
+  .custom_nav-container {
+    padding: 10px 0;
+  }
+  
+  .custom_nav-container .navbar-nav .nav-item .nav-link {
+    padding: 3px 15px;
+    margin: 10px 15px;
+    color: #ffffff;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  .custom_nav-container .nav_search-btn {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    border: none;
+    color: #ffffff;
+    margin: 0 20px;
+  }
+  
+  .custom_nav-container .navbar-toggler {
+    outline: none;
+    padding: 0;
+    width: 37px;
+    height: 42px;
+    transition: all 0.3s;
+  }
+  
+  .custom_nav-container .navbar-toggler span {
+    display: block;
+    width: 35px;
+    height: 4px;
+    background-color: #ffffff;
+    margin: 7px 0;
+    transition: all 0.3s;
+    position: relative;
+    border-radius: 5px;
+  }
+  
+  .custom_nav-container .navbar-toggler span::before,
+  .custom_nav-container .navbar-toggler span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff;
+    top: -10px;
+    border-radius: 5px;
+    transition: all 0.3s;
+  }
+  
+  .custom_nav-container .navbar-toggler span::after {
+    top: 10px;
+  }
+  
+  .custom_nav-container .navbar-toggler[aria-expanded="true"] {
+    transform: rotate(360deg);
+  }
+  
+  .custom_nav-container .navbar-toggler[aria-expanded="true"] span {
+    transform: rotate(45deg);
+  }
+  
+  .custom_nav-container .navbar-toggler[aria-expanded="true"] span::before,
+  .custom_nav-container .navbar-toggler[aria-expanded="true"] span::after {
+    transform: rotate(90deg);
+    top: 0;
+  }
+  
+  .custom_nav-container .navbar-toggler[aria-expanded="true"] .s-1 {
+    transform: rotate(45deg);
+    margin: 0;
+    margin-bottom: -4px;
+  }
+  
+  .custom_nav-container .navbar-toggler[aria-expanded="true"] .s-2 {
+    display: none;
+  }
+  
+  .custom_nav-container .navbar-toggler[aria-expanded="true"] .s-3 {
+    transform: rotate(-45deg);
+    margin: 0;
+    margin-top: -4px;
+  }
+  
+  .quote_btn-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quote_btn-container a {
+    color: #ffffff;
+    text-transform: uppercase;
+  }
+  
+  .quote_btn-container a span {
+    margin-left: 5px;
+  }
+
+
+  /* Employee css code */
+  .worker-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+    justify-content: center;
+    background-color: #f9f9f9;
+}
+
+.worker-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.worker-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 16px;
+}
+
+.worker-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+.worker-profession {
+    color: #666;
+    margin: 8px 0;
+}
+
+.worker-rating {
+    margin: 8px 0;
+    color: #ff9900;
+    font-size: 1rem;
+}
+
+.worker-price {
+    margin: 8px 0;
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+.hire-btn {
+    padding: 10px 16px;
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.hire-btn:hover {
+    background: #2980b9;
+}
+
+
+
+
