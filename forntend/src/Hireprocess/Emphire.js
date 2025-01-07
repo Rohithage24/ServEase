@@ -22,7 +22,7 @@ function Emphire() {
 
         const fetchEmployee = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/emp/${id}`, {
+                const response = await fetch(`https://servease-backend.onrender.com/emp/${id}`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",

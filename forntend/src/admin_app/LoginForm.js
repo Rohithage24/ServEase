@@ -89,7 +89,7 @@ const LoginForm = () => {
 
       try {
         // Send data to the backend
-        const response = await fetch("http://localhost:8080/Employee", {
+        const response = await fetch("https://servease-backend.onrender.com/Employee", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
