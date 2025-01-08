@@ -20,6 +20,7 @@ import Emphire from "./Hireprocess/Emphire";
 
 // css
 import 'bootstrap/dist/css/bootstrap.min.css';
+import SuccessfullyHired from "./Hireprocess/SuccessfullyHired";
 
 // import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
@@ -48,6 +49,8 @@ const AppWrapper = () => {
         <Route path="/EmployeeList/:service" element={<EmployeeList />} />
         <Route path="/Employee" element={<EmployeD />} />
         <Route path="/EmpHire/:id" element={<Emphire />} />
+        <Route path="/sucessfully" element={<SuccessfullyHired />} />
+
 
 
 

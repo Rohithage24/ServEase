@@ -1,0 +1,104 @@
+.hire-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    height: 100vh;
+    align-items: center;
+
+    
+}
+
+.dashboard{
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.employee-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.employee-card h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.details p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.hire-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.hire-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* sucessfully */
+
+.successfully-hired-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .success-content {
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .success-content h1 {
+    font-size: 2.5rem;
+    color: #4caf50;
+    margin-bottom: 20px;
+  }
+  
+  .success-content p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 30px;
+  }
+  
+  .success-image {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 30px;
+  }
+  
+  .return-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .return-button:hover {
+    background-color: #45a049;
+  }

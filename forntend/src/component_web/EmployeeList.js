@@ -6,7 +6,7 @@ function EmployeeList() {
     const [auth, setAuth] = useAuth();
     const navigate = useNavigate();
     const { service } = useParams();
-    const [employees, setEmployees] = useState([]); 
+    const [employees, setEmployees] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -55,17 +55,21 @@ function EmployeeList() {
     }, [service, auth.user]);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div><div className="employee-card">
+            <div className="loader-container">
+                <div className="loader"></div>
+            </div>
+        </div></div>;
     }
 
     if (error) {
         return <div>Error: {error}</div>;
     }
 
-    const HireEmp =(id)=>{
-        
+    const HireEmp = (id) => {
+
         navigate(`/EmpHire/${id}`)
-        
+
 
     }
 
@@ -82,7 +86,7 @@ function EmployeeList() {
                         <p>Phone: {employee.phone}</p>
                         <p>Email: {employee.Gmail}</p>
                     </div>
-                    <button className="hire-btn" onClick={()=>HireEmp(employee._id)}>Hire Now</button>
+                    <button className="hire-btn" onClick={() => HireEmp(employee._id)}>Hire Now</button>
                 </div>
             ))}
         </div>
