@@ -121,7 +121,8 @@ function Clint() {
                 role="button"
                 data-slide="prev"
               >
-                <i className="fa fa-angle-left" aria-hidden="true"></i>
+                <i class="bi bi-caret-left-square"></i>
+
                 <span className="sr-only">Previous</span>
               </a>
               <a
@@ -130,7 +131,8 @@ function Clint() {
                 role="button"
                 data-slide="next"
               >
-                <i className="fa fa-angle-right" aria-hidden="true"></i>
+                <i class="bi bi-caret-right-square"></i>
+
                 <span className="sr-only">Next</span>
               </a>
             </div>

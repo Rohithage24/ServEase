@@ -24,7 +24,7 @@ function About() {
                   Our mission is to simplify your everyday tasks by bringing the
                   right professionals to your doorstep.{" "}
                 </p>
-                <a href="">Read More</a>
+                <a className="btn " href="">Read More</a>
               </div>
             </div>
             <div className="col-md-6 ">

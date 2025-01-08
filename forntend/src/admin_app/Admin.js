@@ -1,18 +1,16 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/auth";
-import {  Link ,useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import LoginForm from "./LoginForm";
 import ServicesManagement from "./ServicesManagement";
 import ServiceProvidersManagement from "./ServiceProvidersManagement";
 import UsersManagement from "./UsersManagement";
 import "react-toastify/dist/ReactToastify.css";
-import "./Admin.css"
-
+import "./Admin.css";
 
 const Admin = () => {
   const [auth, setAuth] = useAuth();
- 
 
   const handleLogout = () => {
     setAuth({
@@ -22,8 +20,6 @@ const Admin = () => {
     });
     localStorage.removeItem("auth");
   };
-
-
 
   const [tab, setTab] = useState("users");
 
@@ -56,52 +52,29 @@ const Admin = () => {
           className={tab === "serviceProviders" ? "active" : ""}
           onClick={() => setTab("serviceProviders")}
         >
-          Manage Service Providers
+          Manage Services
         </button>
         <button
           className={tab === "services" ? "active" : ""}
           onClick={() => setTab("services")}
         >
-          Manage Services
+          Manage Service Providers
         </button>
         <button
           className={tab === "LoginForm" ? "active" : ""}
           onClick={() => setTab("LoginForm")}
         >
-          Worker Login
+          Service Providers Register
         </button>
-
       </div>
       <div className="link-container">
-        <Link
-          className="btn btn-info"
-          to={"/"}
-          onClick={handleLogout}
-        >
+        <Link className="btn btn-info" to={"/"} onClick={handleLogout}>
           Logout ({auth.user})
         </Link>
       </div>
       <div className="admin-content">{renderTabContent()}</div>
-
     </div>
   );
-}
+};
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  export default Admin;
-
-
+export default Admin;

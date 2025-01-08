@@ -14,7 +14,7 @@ function Price() {
               <div className="detail-box">
                 <h2>
                   {" "}
-                  strats from $ <span>3 </span>
+                   ₹ 200
                 </h2>
                 <h6>Home services</h6>
                 <ul className="price_features">
@@ -27,14 +27,14 @@ function Price() {
                 </ul>
               </div>
               <div className="btn-box">
-                <Link to="">See Detail</Link>
+                <Link className="btn" to="">See Detail</Link>
               </div>
             </div>
             <div className="box">
               <div className="detail-box">
                 <h2>
                   {" "}
-                  starts from $ <span>20</span>
+                   ₹ 299
                 </h2>
                 <h6>Automobile Services</h6>
                 <ul className="price_features">
@@ -47,13 +47,13 @@ function Price() {
                 </ul>
               </div>
               <div className="btn-box">
-                <Link to="">See Detail</Link>
+                <Link className="btn" to="">See Detail</Link>
               </div>
             </div>
             <div className="box">
               <div className="detail-box">
                 <h2>
-                  $ <span>80</span>
+                  ₹ 450
                 </h2>
                 <h6>Cleaning Services</h6>
                 <ul className="price_features">
@@ -66,7 +66,7 @@ function Price() {
                 </ul>
               </div>
               <div className="btn-box">
-                <Link to="">See Detail</Link>
+                <Link className="btn" to="">See Detail</Link>
               </div>
             </div>
           </div>

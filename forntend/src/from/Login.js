@@ -28,13 +28,13 @@ const Login=()=>{
           className={tab === "Loginusers" ? "active" : ""}
           onClick={() => setTab("Loginusers")}
         >
-          Login Users
+          Login User
         </button>
         <button
           className={tab === "LoginEmployee" ? "active" : ""}
           onClick={() => setTab("LoginEmployee")}
         >
-          Login for Profectional
+          Login for Professional
         </button>
        
 

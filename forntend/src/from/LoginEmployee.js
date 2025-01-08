@@ -52,7 +52,7 @@ const LoginEmployee = () => {
   
     return (
       <div style={styles.formContainer}>
-        <h2 style={styles.title}>Employee Login</h2>
+        <h2 style={styles.title}>Login Professional</h2>
         <form onSubmit={handleRegister} style={styles.form}>
           <input
             type="gmail"

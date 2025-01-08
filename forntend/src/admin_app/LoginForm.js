@@ -34,6 +34,7 @@ const LoginForm = () => {
       "AC Service",
       "Home Security Installation",
       "Furniture Assembly",
+      "Night Serveces"
     ];
 
     const handleChange = (e) => {
