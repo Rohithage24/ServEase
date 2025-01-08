@@ -5,7 +5,6 @@ import { useAuth } from "../context/auth";
 
 function Navber() {
   const [auth, setAuth] = useAuth();
-  
 
   const handleLogout = () => {
     setAuth({
@@ -28,7 +27,7 @@ function Navber() {
             </Link>
 
             <button
-              className="navbar-toggler"
+              class="navbar-toggler collapsed"
               type="button"
               data-toggle="collapse"
               data-target="#navbarSupportedContent"
@@ -36,7 +35,7 @@ function Navber() {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span className=""> </span>
+              <span class=""> </span>
             </button>
 
             <div

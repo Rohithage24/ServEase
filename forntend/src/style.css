@@ -66,4 +66,40 @@
       
   /* Contant code css */
 
-  
+  /* Naveber */
+  .custom_nav-container .navbar-toggler span:after {
+    top: 10px;
+}
+
+.custom_nav-container .navbar-toggler span:after, .custom_nav-container .navbar-toggler span:before {
+    background-color: #fff;
+    border-radius: 5px;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: -10px;
+    transition: all .3s;
+    width: 100%;
+}
+.custom_nav-container .navbar-toggler span::after {
+    top: 10px;
+}
+.custom_nav-container .navbar-toggler span::before, .custom_nav-container .navbar-toggler span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff;
+    top: -10px;
+    border-radius: 5px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
