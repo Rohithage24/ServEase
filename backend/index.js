@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 
 const userjs = require("./user");
 const Employee = require("./Employee")
+const WorkRe = require("./WorkREq")
 
 const cors = require("cors");
 
@@ -45,7 +46,8 @@ server.post("/Employee", Employee.addEmployee);
 server.get('/emp/:id',Employee.FindEmpl)
 server.delete('/delete/:id',Employee.deleteEmployee)
 
-
+// Requset Model
+server.post("/workre",WorkRe.addREquest)
 
 
 server.listen(8080, () => {

@@ -76,13 +76,35 @@ function Emphire() {
   }
 
 
-  const hireNow = () =>{
-
-    
-    toast("Hired" , employee.Name)
-    navigate("/sucessfully");
-  }
-
+  const hireNow = async () => {
+    const userId = auth.user._id;
+    const employeeId = employee._id;
+    const hireDate = new Date().toISOString(); // Corrected this line
+    const userMobile = auth.user.mobile;
+    console.log(userId, userMobile);
+    console.log(employeeId);
+  
+    // Backend request to hire the employee
+    try {
+      const response = await fetch(`https://servease-backend.onrender.com/workre`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ employeeId, userId, hireDate, userMobile }),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to hire employee");
+      }
+  
+      toast.success("Hired " + employee.Name);
+      navigate("/sucessfully");
+    } catch (error) {
+      console.error("Error hiring employee:", error);
+      toast.error("Failed to hire employee");
+    }
+  };
   return (
     <>
       <div className="dashboard">
