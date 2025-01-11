@@ -21,6 +21,7 @@ import Emphire from "./Hireprocess/Emphire";
 // css
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SuccessfullyHired from "./Hireprocess/SuccessfullyHired";
+// import EditEmp from "./Employee/EditEmp";
 
 // import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
@@ -28,11 +29,14 @@ import SuccessfullyHired from "./Hireprocess/SuccessfullyHired";
 const AppWrapper = () => {
   const location = useLocation();
   const isAdminRoute = location.pathname.toLowerCase().startsWith("/admin");
+  const isEmployeeRoute = location.pathname.toLowerCase().startsWith("/employee");
+
 
   return (
     <>
       {/* Conditional Navber Rendering */}
-      {isAdminRoute ? <Admin /> : <Navber />}
+      {/* {isAdminRoute ? <Admin /> : isEmploy ? <EmployeD/>: <Navber />   } */}
+      {!isAdminRoute && !isEmployeeRoute && <Navber />}
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
@@ -47,16 +51,17 @@ const AppWrapper = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/EmployeeList/:service" element={<EmployeeList />} />
-        <Route path="/Employee" element={<EmployeD />} />
+        {/* <Route path="/Employee" element={<EmployeD />} /> */}
         <Route path="/EmpHire/:id" element={<Emphire />} />
         <Route path="/sucessfully" element={<SuccessfullyHired />} />
 
 
 
 
-
         
-
+        {/* Admin Routes */}
+        <Route path="/admin/*" element={<Admin />} />
+        <Route path="/Employee/*" element={<EmployeD />} />
         {/* Admin Routes */}
         {/* <Route path="/admin" element={<Admin />} /> */}
         {/* <PrivateRoute></PrivateRoute> */}

@@ -77,6 +77,8 @@ function Emphire() {
 
 
   const hireNow = () =>{
+
+    
     toast("Hired" , employee.Name)
     navigate("/sucessfully");
   }

@@ -79,7 +79,7 @@ function Contant() {
                     <div className="row">
                       <div className=" col-lg-10 mx-auto">
                         <div className="img-box img-fluid">
-                          <img src="image/elec.jpg" className="fluid" alt="" />
+                          <img src="image/client2.png" className="fluid" alt="" />
                         </div>
                       </div>
                     </div>
