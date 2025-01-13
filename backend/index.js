@@ -48,6 +48,8 @@ server.delete('/delete/:id',Employee.deleteEmployee)
 
 // Requset Model
 server.post("/workre",WorkRe.addREquest)
+server.get("/request/:id" , WorkRe.getReqs)
+server.get("/userReq/:id" , userjs.getRequser)
 
 
 server.listen(8080, () => {

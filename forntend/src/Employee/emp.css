@@ -1,268 +1,231 @@
 /* Reset default margin and padding for all elements */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Set base styles for body and HTML */
 body, html {
-    font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
 }
 
 /* Container for worker profile */
-.worker-profile-container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 30px;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 /* Header section of the profile */
 .profile-header {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 30px;
 }
 
 /* Profile picture styling */
 .profile-picture img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 5px solid #3498db;
-    object-fit: cover;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px solid #3498db;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Worker name styling */
 .worker-name {
-    font-size: 2.2rem;
-    font-weight: bold;
-    color: #2c3e50;
-    margin-top: 15px;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-top: 15px;
 }
 
 /* Worker profession styling */
 .worker-profession {
-    font-size: 1.4rem;
-    color: #3498db;
-    margin-top: 8px;
+  font-size: 1.4rem;
+  color: #3498db;
+  margin-top: 8px;
 }
 
 /* Details section of the profile */
 .profile-details {
-    width: 100%;
-    text-align: left;
-    margin-top: 20px;
-    padding: 20px;
-    background: #f7faff;
-    border-radius: 10px;
-    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
-    border-left: 4px solid #3498db;
+  width: 100%;
+  text-align: left;
+  margin-top: 20px;
+  padding: 20px;
+  background: #f7faff;
+  border-radius: 10px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #3498db;
 }
 
 .btn{
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 /* Heading within details section */
 .profile-details h3 {
-    font-size: 1.6rem;
-    margin-bottom: 15px;
-    color: #2c3e50;
-    font-weight: bold;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  font-weight: bold;
 }
 
 /* List styling within details section */
 .profile-details ul {
-    list-style: none;
-    padding-left: 0;
+  list-style: none;
+  padding-left: 0;
 }
 
 /* List item styling within details section */
 .profile-details li {
-    font-size: 1.1rem;
-    margin: 10px 0;
-    line-height: 1.5;
+  font-size: 1.1rem;
+  margin: 10px 0;
+  line-height: 1.5;
 }
 
 /* Strong text within list items */
 .profile-details li strong {
-    color: #3498db;
+  color: #3498db;
 }
 
 /* Responsive design for smaller screens */
-@media (max-width: 768px) {
-    .worker-profile-container {
-        padding: 20px;
-    }
 
-    .profile-header {
-        margin-bottom: 20px;
-    }
 
-    .worker-name {
-        font-size: 1.8rem;
-    }
+.profile-card {
+  width: 100%;
+  max-width: 800px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
 
-    .worker-profession {
-        font-size: 1.2rem;
-    }
+.profile-banner {
+  position: relative;
+}
 
-    .profile-details {
-        padding: 15px;
-    }
+.banner-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
 
-    .profile-details li {
-        font-size: 1rem;
-    }
+.profile-header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.profile-picture img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-right: 20px;
+  border: 5px solid #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.profile-info h3 {
+  margin: 5px 0 0;
+  color: #777;
+  font-weight: 400;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: #f9f9fb;
+  border-top: 1px solid #eee;
+}
+
+.stat h4 {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.stat p {
+  margin: 5px 0 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.profile-details, .bio-section {
+  padding: 20px;
+}
+
+.profile-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.profile-details li {
+  margin-bottom: 10px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #007bff;
+  color: #fff;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: #fff;
+}
+
+.btn-danger {
+  background: #dc3545;
+  color: #fff;
+}
+
+.btn:hover {
+  opacity: 0.9;
 }
 
 
-.profile-page-container {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    background-color: #f4f4f9;
-  }
-  
-  .profile-card {
-    width: 100%;
-    max-width: 800px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-  }
-  
-  .profile-banner {
-    position: relative;
-  }
-  
-  .banner-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .profile-header {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .profile-picture img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    margin-right: 20px;
-    border: 5px solid #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .profile-info h1 {
-    margin: 0;
-    font-size: 24px;
-    color: #333;
-  }
-  
-  .profile-info h3 {
-    margin: 5px 0 0;
-    color: #777;
-    font-weight: 400;
-  }
-  
-  .profile-stats {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    background: #f9f9fb;
-    border-top: 1px solid #eee;
-  }
-  
-  .stat h4 {
-    margin: 0;
-    font-size: 14px;
-    color: #555;
-  }
-  
-  .stat p {
-    margin: 5px 0 0;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .profile-details, .bio-section {
-    padding: 20px;
-  }
-  
-  .profile-details ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .profile-details li {
-    margin-bottom: 10px;
-  }
-  
-  .action-buttons {
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
-  }
-  
-  .btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .btn-primary {
-    background: #007bff;
-    color: #fff;
-  }
-  
-  .btn-secondary {
-    background: #6c757d;
-    color: #fff;
-  }
-  
-  .btn-danger {
-    background: #dc3545;
-    color: #fff;
-  }
-  
-  .btn:hover {
-    opacity: 0.9;
-  }
-  
+.row{
+  justify-content: space-between;
+}
 
-  .row{
-    justify-content: space-between;
-  }
-
-  /* work request */
-  .work-request-section {
-    margin-top: 20px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+/* work request */
+.work-request-section {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
 .work-request-buttons {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .btn-success {
-    margin-right: 10px;
+  margin-right: 10px;
 }
+
+.container-md{
+  width: 100vh;
+  margin-right: 500ph;
+}
+/* navber  */

@@ -37,13 +37,36 @@ exports.getuser = async (req, res) => {
     if (user) {
       // If the user exists, send a success response
       res.status(200).json({ message: "User  found", user });
-      console.log(user);
+      
     } else {
       // If the user does not exist, send a 404 response
       res.status(404).json({ message: "User  not found" });
     }
   } catch (error) {
     // Handle any errors that occur during the database query
+    console.error("Error fetching user:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+
+exports.getRequser = async (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  try {
+   
+    const user = await modelUser.findOne({ _id:id  });
+
+    if (user) {
+      
+      res.status(200).json({ message: "Userrequest  found", user });
+      
+    } else {
+     
+      res.status(404).json({ message: "Userrequest  not found" });
+    }
+  } catch (error) {
+   
     console.error("Error fetching user:", error);
     res.status(500).json({ message: "Internal server error" });
   }

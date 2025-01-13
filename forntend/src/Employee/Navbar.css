@@ -1,0 +1,113 @@
+.App-nav {
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100vh;
+}
+.row{
+  display: flex;
+}
+.container-max{
+  width: 100vh;
+  margin-left: 200ph;
+}
+.side-navbar {
+  width: 200px;
+  height: 100vh;
+  background-color: #333;
+  color: white;
+  position: fixed;
+  left: -250px;
+  transition: left 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  z-index: 1;
+}
+
+.side-navbar.visible {
+  left: 0; 
+}
+
+.side-navbar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-navbar ul li {
+  padding: 15px;
+  text-align: center;
+}
+
+.side-navbar ul li button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.logout-button-container {
+  padding: 15px;
+  text-align: center;
+  border-top: 1px solid #555; 
+}
+
+.logout-button {
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.logout-button:hover {
+  background-color: #777;
+}
+
+.toggle-button {
+  position: static;
+  top: 20px;
+  left: 20px;
+  padding: 10px;
+  background-color: #555;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.toggle-button {
+  position: fixed; 
+  top: 20px;
+  left: 20px;
+  padding: 10px;
+  background-color: #555;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  transition: left 0.3s ease-in-out;
+}
+
+.side-navbar.visible ~ .toggle-button {
+  left: 220px; 
+}
+
+.conti{
+  width: 1400ph;
+  margin-left: 200ph;
+  border-radius: 2px solid red;
+}
+ /* nav button  */
+.toggle-button {
+  transition: transform 0.3s ease; 
+}
+
+.toggle-button.rotated {
+  transform: rotate(180deg);
+}
