@@ -91,11 +91,11 @@ exports.addEmployee =  (req, res) => {
 
 exports.getAllEmployees = async (req, res) => {
   try {
-    // Fetch all employees from the database
+   
     const employees = await modelEmployee.find({});
     // console.log("Employee", employees);
 
-    // Send the response with the list of employees
+
     res.status(200).send({
       message: "Employees fetched successfully",
       employees: employees,
