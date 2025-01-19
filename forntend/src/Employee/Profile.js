@@ -19,6 +19,9 @@ function Profile() {
     setEmployee(auth?.user || {});
   }, [auth]);
 
+  console.log(auth);
+  
+
   return (
     <>
       <div className="container-md col-md-12">
