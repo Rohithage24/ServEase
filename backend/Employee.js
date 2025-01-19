@@ -38,7 +38,7 @@ const EmployeeSchema = new mongoose.Schema({
 
 
 const modelEmployee = mongoose.model("Employee", EmployeeSchema);
-server.use(Express.static("public"))
+server.use(express.static("public"))
 
 const imageDirectory = path.join(__dirname, 'public/image');
 if (!fs.existsSync(imageDirectory)) {
