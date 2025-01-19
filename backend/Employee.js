@@ -94,7 +94,13 @@ exports.addEmployee =  (req, res) => {
   });
 };
 
-
+exports.getImage = async (req, res) => {
+  const filename = req.params.filename;
+  console.log("image");
+  
+  const imagePath = path.join(__dirname, 'public/image', filename);
+  res.sendFile(imagePath);
+};
 
 exports.getAllEmployees = async (req, res) => {
   try {

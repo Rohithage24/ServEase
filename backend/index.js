@@ -44,6 +44,7 @@ server.get('/find/:service', Employee.FindEmployees);
 server.post('/EmployoLogin',Employee.getEmployee)
 
 server.post("/Employee", Employee.addEmployee);
+server.get("/image/:filename",Employee.getImage)
 server.get('/emp/:id',Employee.FindEmpl)
 server.delete('/delete/:id',Employee.deleteEmployee)
 
