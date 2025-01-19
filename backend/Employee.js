@@ -96,8 +96,6 @@ exports.addEmployee =  (req, res) => {
 
 exports.getImage = async (req, res) => {
   const filename = req.params.filename;
-  console.log("image",filename);
-  
   const imagePath = path.join(__dirname, 'public/image', filename);
   res.sendFile(imagePath);
 };

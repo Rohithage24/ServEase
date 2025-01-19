@@ -19,9 +19,7 @@ function Profile() {
     setEmployee(auth?.user || {});
   }, [auth]);
 
-  console.log(auth);
   
-
   return (
     <>
       <div className="container-md col-md-12">
@@ -29,7 +27,7 @@ function Profile() {
         <div className="profile-header">
           <div className="profile-picture">
             <img
-              src="https://via.placeholder.com/150"
+              src={`https://servease-backend.onrender.com/image/${Employee.image}`}
               alt={`${Employee.Name}'s profile`}
             />
           </div>
