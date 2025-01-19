@@ -1,6 +1,19 @@
 const express= require("express");
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+const cors = require("cors");
+const multer = require("multer");
+const path = require("path");
+const bodyParser = require("body-parser");
+
+const server = express();
+
+server.use(express.json());
+server.use(express.static("public"))
+server.use(cors());
+server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({ extended: true }));
+
 
 
 
@@ -16,25 +29,65 @@ const EmployeeSchema = new mongoose.Schema({
   Rating: String,
   Experience: Number,
   pinCode: Number,
+  image : String,
   date: { type: Date, default: Date.now },
   
 });
 
+
 const modelEmployee = mongoose.model("Employee", EmployeeSchema);
 
-exports.addEmployee = async (req, res) => {
-  console.log("Request Body:", req.body);
-  try {
-    const Employee = new modelEmployee(req.body);
-    await Employee.save();
-    res
-      .status(201)
-      .send({ message: "Employee created successfully", Employee: Employee });
-  } catch (err) {
-    console.error("Error saving user:", err);
-    res.status(500).send({ message: "Error creating user", error: err });
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/image");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + Date.now() + path.extname(file.originalname));
   }
+});
+
+const upload = multer({ storage });
+
+// Add Employee Endpoint
+exports.addEmployee =  (req, res) => {
+  upload.single("image")(req, res, (err) => {
+    if (err) {
+      console.error("Error handling file upload:", err);
+      return res.status(500).json({ message: "Error handling file upload", error: err });
+    }
+
+    // // Log the request body and file
+    // console.log("Form Data:", req.body);
+    // console.log("Uploaded File:", req.file);
+
+    try {
+      const Employee = new modelEmployee({
+        Name: req.body.Name,
+        Age: req.body.Age,
+        Gmail: req.body.Gmail,
+        Password: req.body.Password,
+        Gender: req.body.Gender,
+        phone: req.body.phone,
+        Aadhar: req.body.Aadhar,
+        Server: req.body.Server,
+        Rating: req.body.Rating,
+        Experience: req.body.Experience,
+        pinCode: req.body.pinCode,
+        image: req.file.filename,
+      });
+       Employee.save();
+      res
+        .status(201)
+        .send({ message: "Employee created successfully", Employee: Employee });
+    } catch (err) {
+      console.error("Error saving user:", err);
+      res.status(500).send({ message: "Error creating user", error: err });
+    }
+  });
 };
+
+
 
 exports.getAllEmployees = async (req, res) => {
   try {
