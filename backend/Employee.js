@@ -6,6 +6,8 @@ const multer = require("multer");
 const path = require("path");
 const bodyParser = require("body-parser");
 
+const fs = require('fs');
+
 const server = express();
 
 server.use(express.json());
@@ -37,6 +39,10 @@ const EmployeeSchema = new mongoose.Schema({
 
 const modelEmployee = mongoose.model("Employee", EmployeeSchema);
 
+const imageDirectory = path.join(__dirname, 'public/image');
+if (!fs.existsSync(imageDirectory)) {
+  fs.mkdirSync(imageDirectory, { recursive: true });
+}
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
