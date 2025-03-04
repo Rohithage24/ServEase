@@ -1,85 +1,77 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/auth";
-import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import './emp.css'
+import { useNavigate } from "react-router-dom";
 import Request from "./Request";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 
 function Profile() {
-  const [auth, setAuth] = useAuth();
+  const [auth] = useAuth();
   const navigate = useNavigate();
-  const [Employee, setEmployee] = useState({});
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
+  const [employee, setEmployee] = useState({});
 
   useEffect(() => {
     setEmployee(auth?.user || {});
   }, [auth]);
 
-  
   return (
-    <>
-      <div className="container-md col-md-12">
-        {/* Profile Header */}
-        <div className="profile-header">
-          <div className="profile-picture">
-            <img
-              src={`https://servease-backend.onrender.com/image/${Employee.image}`}
-              alt={`${Employee.Name}'s profile`}
-            />
-          </div>
-          <div className="profile-info">
-            <h1 className="Employee-name">{Employee.Name}</h1>
-            <h2 className="Employee-profession">{Employee.Server}</h2>
-          </div>
-        </div>
+    <section className="bg-light py-5">
+      <div className="container">
+       
 
-        <div className="container row">
+        <div className="row">
+          {/* Profile Sidebar */}
+          <div className="col-lg-4">
+            <div className="card text-center mb-4">
+              <div className="card-body">
+                <img
+                  src={`https://servease-backend.onrender.com/image/${employee.image}`}
+                  alt="User Avatar"
+                  className="rounded-circle img-fluid"
+                  style={{ width: "150px" }}
+                />
+                <h5 className="my-3">{employee.Name || "User Name"}</h5>
+                <p className="text-muted mb-1">{employee.Server || "Profession"}</p>
+                <p className="text-muted mb-4">{employee.pinCode || "Location"}</p>
+                <div className="d-flex justify-content-center">
+                  <button className="btn btn-primary me-1">Follow</button>
+                  <button className="btn btn-outline-primary">Message</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Profile Details */}
-          <div className="profile-details col-md-5">
-            <h3>Profile Details</h3>
-            <ul>
-              <li>
-                <strong>Age:</strong> {Employee.Age}
-              </li>
-              <li>
-                <strong>Rating:</strong> {Employee.Rating} ★
-              </li>
-              <li>
-                <strong>Experience:</strong> {Employee.Experience} years
-              </li>
-              <li>
-                <strong>Location:</strong> {Employee.pinCode}
-              </li>
-              <li>
-                <strong>Email:</strong> {Employee.Gmail}
-              </li>
-              <li>
-                <strong>Phone:</strong> {Employee.phone}
-              </li>
-            </ul>
-          </div>
+          <div className="col-lg-8">
+            <div className="card mb-4">
+              <div className="card-body">
+                <h3 className="mb-3">Profile Details</h3>
+                <ul className="list-group list-group-flush">
+                  <li className="list-group-item"><strong>Age:</strong> {employee.Age || "N/A"}</li>
+                  <li className="list-group-item"><strong>Rating:</strong> {employee.Rating || "N/A"} ★</li>
+                  <li className="list-group-item"><strong>Experience:</strong> {employee.Experience || "N/A"} years</li>
+                  <li className="list-group-item"><strong>Email:</strong> {employee.Gmail || "N/A"}</li>
+                  <li className="list-group-item"><strong>Phone:</strong> {employee.phone || "N/A"}</li>
+                </ul>
+              </div>
+            </div>
 
-          <div className="profile-details col-md-6">
-            <div className="bio-section">
-              <h3>About Me</h3>
-              <p>{Employee.bio || "No bio available."}</p>
+            {/* About Me */}
+            <div className="card mb-4">
+              <div className="card-body">
+                <h3>About Me</h3>
+                <p>{employee.bio || "No bio available."}</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div>
-          {/* Work request */}
-          <div className="work-request-section">
-            <Request />
-          </div>
-
+        {/* Work Request Section */}
+        <div className="work-request-section mt-4">
+          <Request />
         </div>
       </div>
-    </>
+    </section>
   );
 }
 

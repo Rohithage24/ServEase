@@ -6,6 +6,7 @@ import LoginForm from "./LoginForm";
 import ServicesManagement from "./ServicesManagement";
 import ServiceProvidersManagement from "./ServiceProvidersManagement";
 import UsersManagement from "./UsersManagement";
+import UserRequests from "./UserRequests";
 import "react-toastify/dist/ReactToastify.css";
 import "./Admin.css";
 
@@ -33,6 +34,8 @@ const Admin = () => {
         return <ServicesManagement />;
       case "LoginForm":
         return <LoginForm />;
+      case "UserRequests":
+        return <UserRequests />;  
       default:
         return <UsersManagement />;
     }
@@ -49,11 +52,18 @@ const Admin = () => {
           Manage Users
         </button>
         <button
+          className={tab === "requests" ? "active" : ""}
+          onClick={() => setTab("UserRequests")}
+        >
+          User Requests
+        </button>
+        <button
           className={tab === "serviceProviders" ? "active" : ""}
           onClick={() => setTab("serviceProviders")}
         >
           Manage Services
         </button>
+        
         <button
           className={tab === "services" ? "active" : ""}
           onClick={() => setTab("services")}

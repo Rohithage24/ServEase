@@ -31,6 +31,7 @@ const EmployeeSchema = new mongoose.Schema({
   Rating: String,
   Experience: Number,
   pinCode: Number,
+  Address: String,
   image : String,
   date: { type: Date, default: Date.now },
   
@@ -81,6 +82,7 @@ exports.addEmployee =  (req, res) => {
         Rating: req.body.Rating,
         Experience: req.body.Experience,
         pinCode: req.body.pinCode,
+        Address:req.body.Address,
         image: req.file.filename,
       });
        Employee.save();

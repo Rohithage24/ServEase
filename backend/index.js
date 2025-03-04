@@ -49,10 +49,47 @@ server.get('/emp/:id',Employee.FindEmpl)
 server.delete('/delete/:id',Employee.deleteEmployee)
 
 // Requset Model
-server.post("/workre",WorkRe.addREquest)
-server.get("/request/:id" , WorkRe.getReqs)
-server.get("/userReq/:id" , userjs.getRequser)
+server.post('/send-email', WorkRe.addREquest);
+server.get("/request" , WorkRe.getAllRequests)
+// server.get("/userReq/:id" , userjs.getRequser)
 
+
+// // Email transporter
+
+// const nodemailer = require('nodemailer');
+// const transporter = nodemailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//       user: 'rohithage2244@gmail.com', // Replace with your email
+//       pass: 'imvl nowj dmrp jrom', // Replace with your email password or app-specific password
+//   },
+// });
+
+// // Route to handle email sending
+// server.post('/send-email', async (req, res) => {
+//   const { to, subject, body, userData } = req.body;
+//   console.log(req.body);
+
+  
+
+//   const mailOptions = {
+//       from: 'Rohitgajananhage@gmail.com', // Sender address
+//       to, // Recipient address(es)
+//       subject, // Subject line
+//       text: body, // Plain text body
+//   };
+
+//   console.log(mailOptions);
+  
+
+//   try {
+//       await transporter.sendMail(mailOptions);
+//       res.status(200).json({ message: 'Email sent successfully!' });
+//   } catch (error) {
+//       console.error('Error sending email:', error);
+//       res.status(500).json({ message: 'Failed to send email' });
+//   }
+// });
 
 server.listen(8080, () => {
   console.log("Server is start ");

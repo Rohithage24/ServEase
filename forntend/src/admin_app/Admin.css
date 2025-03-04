@@ -1,15 +1,16 @@
 /* Admin Page Styles */
 .admin-page {
     padding: 2rem;
-    background-color: #f4f4f4;
-    min-height: calc(100vh - 120px);
-    /* Adjust for header and footer */
+    background: linear-gradient(to bottom right, #1a1a2e, #0f3460); 
+    min-height: calc(100vh - 120px); /* Adjust for header and footer */
+    /* color: white;  */
 }
+
 
 .admin-title {
     font-size: 2rem;
     text-align: center;
-    color: #003366;
+    color: #0080ff;
     margin-bottom: 1.5rem;
 }
 
@@ -32,11 +33,12 @@
 
 .admin-tabs button.active,
 .admin-tabs button:hover {
-    background-color: #ffd700;
-    /* Gold */
-    color: #003366;
-    /* Dark blue */
+    background: linear-gradient(to right, #ffcc33, #ffd700, #ffcc33); /* Golden gradient */
+    color: #003366; /* Dark blue */
+    border: none;
+    transition: background 0.3s ease, color 0.3s ease;
 }
+
 
 .admin-content {
     background-color: #ffffff;
@@ -47,27 +49,29 @@
 
 .link-container {
     display: flex;
-    justify-content: flex-end; /* Aligns the content to the right */
-    width: 100%; /* Ensures the container takes full width */
-  }
+    justify-content: flex-end;
+    width: 100%;
+}
 
-  /* Services Management Component */
-
-
-  /* General Table Styling */
+/* General Table Styling */
 table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
     font-family: Arial, sans-serif;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    color: #1a1a2e;
 }
 
 /* Table Header Styling */
 thead {
-    background-color: #007BFF;
+    background: linear-gradient(to right, #0056b3, #009dff); /* Blue gradient */
     color: white;
 }
+
 
 thead th {
     padding: 12px 15px;
@@ -94,22 +98,72 @@ tbody td {
     text-align: left;
 }
 
-/* Hover Effect on Rows */
-tbody tr:hover {
-    background-color: #f1f1f1;
+/* Adjust contrast for table rows */
+tbody tr:hover td {
+    background-color: #eaf4ff; /* Light blue on hover */
+}
+
+/* Prevent table row hover effect from affecting buttons */
+tbody tr:hover .btn {
+    opacity: 1;
+}
+
+/* Button Styling */
+.btn {
+    padding: 8px 12px;
+    margin: 5px;
+    border: none;
     cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Date Column Styling */
-tbody td:last-child {
+.btn-view {
+    background-color: #3498db !important; /* Blue */
+    color: white !important;
+}
+
+.btn-accept {
+    background-color: #2ecc71 !important; /* Green */
+    color: white !important;
+}
+
+.btn-reject {
+    background-color: #e74c3c !important; /* Red */
+    color: white !important;
+}
+
+/* Ensure buttons are visible in the table */
+td button {
+    display: inline-block;
+    width: auto;
+}
+
+/* Button Hover Effects */
+.btn:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* Disabled Button Styling */
+.btn:disabled {
+    background-color: grey !important;
+    color: white !important;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Description Row Styling */
+.description-row {
+    background-color: #f9f9f9;
+}
+
+.description-cell {
+    padding: 15px;
     font-style: italic;
-    color: #555;
-}
-
-/* Responsive Table */
-@media (max-width: 768px) {
-    table {
-        display: block;
-        overflow-x: auto;
-    }
+    color: #333;
+    border-left: 4px solid #007BFF;
 }

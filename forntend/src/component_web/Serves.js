@@ -73,7 +73,7 @@ function Serves() {
                   <div className="img-box">
                     <img src={service.image} alt={service.title} />
                   </div>
-                  <div className="detail-box">
+                  <div className="detail-box pointer">
                     <h4>{service.title}</h4>
                     <p>{service.description}</p>
                     <a onClick={() => serverHendal(service.link)}>

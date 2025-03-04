@@ -16,11 +16,10 @@ import Admin from "./admin_app/Admin";
 import "./style.css";
 import EmployeeList from "./component_web/EmployeeList";
 import EmployeD from "./Employee/EmployeD";
-import Emphire from "./Hireprocess/Emphire";
 
 // css
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SuccessfullyHired from "./Hireprocess/SuccessfullyHired";
+
 // import EditEmp from "./Employee/EditEmp";
 
 // import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -33,7 +32,10 @@ const AppWrapper = () => {
 
 
   return (
+
+    
     <>
+  
       {/* Conditional Navber Rendering */}
       {/* {isAdminRoute ? <Admin /> : isEmploy ? <EmployeD/>: <Navber />   } */}
       {!isAdminRoute && !isEmployeeRoute && <Navber />}
@@ -52,8 +54,6 @@ const AppWrapper = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/EmployeeList/:service" element={<EmployeeList />} />
         {/* <Route path="/Employee" element={<EmployeD />} /> */}
-        <Route path="/EmpHire/:id" element={<Emphire />} />
-        <Route path="/sucessfully" element={<SuccessfullyHired />} />
 
 
 

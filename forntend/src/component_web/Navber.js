@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../context/auth";
-// import './navber.css'
+//  import './navber.css'
 
 function Navber() {
   const [auth, setAuth] = useAuth();
@@ -19,15 +19,15 @@ function Navber() {
 
   return (
     <>
-      <header className="header_section text">
-        <div className="container-fluid">
+      <header className="header_section   text">
+        <div className="container-fluid ">
           <nav className="navbar navbar-expand-lg custom_nav-container ">
-            <Link className="navbar-brand" href="index.html">
+            <Link className="navbar-brand" >
               <span>ServEase</span>
             </Link>
 
             <button
-              class="navbar-toggler collapsed"
+              className="navbar-toggler collapsed"
               type="button"
               data-toggle="collapse"
               data-target="#navbarSupportedContent"
@@ -35,7 +35,7 @@ function Navber() {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class=""> </span>
+              <span className=""> </span>
             </button>
 
             <div
