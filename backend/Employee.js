@@ -31,7 +31,7 @@ const EmployeeSchema = new mongoose.Schema({
   Rating: String,
   Experience: Number,
   pinCode: Number,
-  Address: String,
+  Address: { type: String, required: true},
   image : String,
   date: { type: Date, default: Date.now },
   
