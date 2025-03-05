@@ -1,17 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect } from 'react'
 import { useAuth } from '../context/auth'
+import { useParams, useNavigate} from "react-router-dom";
+
 
 const RequestFrom = ({ service }) => {
-  const [auth] = useAuth()
+  const [auth ,setAuth] = useAuth()
   const [to, setTo] = useState('')
   const [subject, setSubject] = useState(service)
   const [body, setBody] = useState('')
   const [message, setMessage] = useState('')
   const [name, setName] = useState('')
   const [connect, setContact] = useState('')
+    const navigate = useNavigate();
+  
 
-  const userData = auth.user
-  console.log(userData)
+    useEffect(() => {
+            if (!auth.user) {
+                navigate('/login');
+            }
+        }, [auth.user, navigate]);
+
+        const userData = auth.user || {}; 
+
+//   console.log(userData)
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -57,7 +68,7 @@ const RequestFrom = ({ service }) => {
               <input
                 type='text'
                 placeholder='First Name'
-                value={userData.fName}
+                value={userData?.fName || ''}
                 onChange={e => setName(e.target.value)}
                 style={styles.input}
                 required

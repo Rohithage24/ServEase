@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/auth";
 import { ToastContainer, toast } from "react-toastify";
+import { useParams, useNavigate } from "react-router-dom";
+
 import "react-toastify/dist/ReactToastify.css";
 import "./emp.css";
 
 function Request() {
   const [auth] = useAuth();
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [userData, setUserData] = useState({});
+    useEffect(() => {
+          if (!auth.user) {
+              navigate('/login');
+          }
+      }, [auth.user, navigate]);
   
   useEffect(() => {
     const fetchData = async () => {
@@ -107,7 +116,7 @@ function Request() {
                   const user = userData[request.userId];
                   return user ? (
                     <tr key={user._id}>
-                      <td>{user.fName}</td>
+                      <td>{user.fName || null}</td>
                       <td>{user.mobile}</td>
                       <td>{user.address}</td>
                       <td>

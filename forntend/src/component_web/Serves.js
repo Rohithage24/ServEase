@@ -25,9 +25,9 @@ function Serves() {
     {
       id: 3,
       image: "image/s3.png",
-      title: "Carpentry",
+      title: "Air Condition Maintainance",
       description: "Furniture repairs, custom woodwork, and installations.",
-      link: "Carpentry",
+      link: "Air Condition Maintainance",
     },
     {
       id: 4,
