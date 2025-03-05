@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./Admin.css"; // Ensure you have a CSS file for styling
+import "./Admin.css";
 
 function UserRequests() {
   const [requests, setRequests] = useState([]);
@@ -11,66 +11,62 @@ function UserRequests() {
       try {
         const response = await fetch("http://localhost:8080/request", {
           method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
         });
 
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
+        if (!response.ok) throw new Error("Network response was not ok");
 
-        const data = await response.json(); // Get API response
+        const data = await response.json();
+        console.log(data);
+        
 
-        console.log("Fetched Data:", data); // Debugging: check if data is an array
-
-        // ✅ Ensure each request has `showDetails: false`
+        // Ensure each request has `showDetails: false`
         const formattedRequests = data.map((req) => ({
           ...req,
-          id: req._id, // Use _id as id
-          contact: req.contact || "N/A", // Ensure contact is set
-          address: req.address || "Not Provided", // Ensure address is set
-          description: req.description || "No Description Available", // Ensure description is set
-          status: "pending", // Default status
-          showDetails: false, // Add showDetails property
+          showDetails: false,
         }));
 
-        setRequests(formattedRequests); // Update state
+        setRequests(formattedRequests);
       } catch (error) {
         console.error("Error fetching requests:", error);
       }
     };
 
-    fetchRequests(); // Call function inside useEffect
+    fetchRequests();
   }, []);
 
-  // Handle Accept action
-  const handleAccept = (id) => {
-    setRequests((prevRequests) =>
-      prevRequests.map((req) =>
-        req.id === id ? { ...req, status: "accepted" } : req
-      )
-    );
-    toast.success("Request Accepted ✅");
-  };
-
-  // Handle Reject action
-  const handleReject = (id) => {
-    setRequests((prevRequests) =>
-      prevRequests.map((req) =>
-        req.id === id ? { ...req, status: "rejected" } : req
-      )
-    );
-    toast.error("Request Rejected ❌");
-  };
-
-  // ✅ Fix: Toggle Address & Description Visibility
+  // ✅ Toggle Details
   const toggleDetails = (id) => {
     setRequests((prevRequests) =>
       prevRequests.map((req) =>
-        req.id === id ? { ...req, showDetails: !req.showDetails } : req
+        req._id === id ? { ...req, showDetails: !req.showDetails } : req
       )
     );
+  };
+
+  // ✅ Update Request Status in Database
+  const updateStatus = async (id, newStatus) => {
+    try {
+      const response = await fetch("http://localhost:8080/update-request-status", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ requestId: id, status: newStatus }),
+      });
+
+      if (!response.ok) throw new Error("Failed to update request");
+
+      // Update UI after successful request
+      setRequests((prevRequests) =>
+        prevRequests.map((req) =>
+          req._id === id ? { ...req, status: newStatus } : req
+        )
+      );
+
+      toast.success(`Request ${newStatus} ✅`);
+    } catch (error) {
+      console.error("Error updating status:", error);
+      toast.error("Failed to update request ❌");
+    }
   };
 
   return (
@@ -87,29 +83,33 @@ function UserRequests() {
         </thead>
         <tbody>
           {requests.map((req) => (
-            <React.Fragment key={req.id}>
+            <React.Fragment key={req._id}>
               <tr>
                 <td>{req.name}</td>
                 <td>{req.contact}</td>
                 <td>{req.email}</td>
                 <td>
-                  <button className="btn btn-view" onClick={() => toggleDetails(req.id)}>
+                  <button className="btn btn-view" onClick={() => toggleDetails(req._id)}>
                     {req.showDetails ? "Hide Details" : "View Details"}
                   </button>
-                  <button
-                    className="btn btn-accept"
-                    onClick={() => handleAccept(req.id)}
-                    disabled={req.status !== "pending"}
-                  >
-                    Accept
-                  </button>
-                  <button
-                    className="btn btn-reject"
-                    onClick={() => handleReject(req.id)}
-                    disabled={req.status !== "pending"}
-                  >
-                    Reject
-                  </button>
+
+                  {/* ✅ Show Buttons Only If Status is "pending" */}
+                  {req.status === "pending" && (
+                    <>
+                      <button
+                        className="btn btn-accept"
+                        onClick={() => updateStatus(req._id, "accepted")}
+                      >
+                        Accept
+                      </button>
+                      <button
+                        className="btn btn-reject"
+                        onClick={() => updateStatus(req._id, "rejected")}
+                      >
+                        Reject
+                      </button>
+                    </>
+                  )}
                 </td>
               </tr>
               {req.showDetails && (
@@ -117,7 +117,8 @@ function UserRequests() {
                   <td colSpan="4" className="details-cell">
                     <strong>Service:</strong> {req.serves} <br />
                     <strong>Address:</strong> {req.address} <br />
-                    <strong>Description:</strong> {req.description}
+                    <strong>Description:</strong> {req.description} <br />
+                    <strong>Status:</strong> {req.status}
                   </td>
                 </tr>
               )}
@@ -126,7 +127,6 @@ function UserRequests() {
         </tbody>
       </table>
 
-      {/* Toast Container for Notifications */}
       <ToastContainer position="top-right" autoClose={2000} />
     </div>
   );

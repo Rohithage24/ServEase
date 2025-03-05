@@ -12,7 +12,8 @@ const requestSchema = new mongoose.Schema({
     contact: { type: Number, required: true },
     address: { type: String, required: true },
     serves: { type: String, required: true },
-    description: { type: String, required: true }
+    description: { type: String, required: true },
+    status:{type:String}
 });
 
 // ✅ 3. Create Mongoose Model
@@ -39,7 +40,8 @@ exports.addREquest = async (req, res) => {
           contact:userData.mobile,
           address:userData.address,
           serves: subject,
-          description: body
+          description: body,
+          status:"pending"
       });
 
       await newRequest.save();
@@ -76,3 +78,30 @@ exports.getAllRequests = async (req, res) => {
 };
 
 
+
+exports.updateRequestStatus = async (req, res) => {
+  try {
+      const { requestId, status } = req.body;
+
+      // Validate if status is provided
+      if (!requestId || !status) {
+          return res.status(400).json({ message: "Request ID and Status are required" });
+      }
+
+      const updatedRequest = await RequestModel.findByIdAndUpdate(
+          requestId,
+          { status: status },
+          { new: true }
+      );
+
+      if (!updatedRequest) {
+          return res.status(404).json({ message: "Request not found" });
+      }
+
+      res.status(200).json({ message: "Request status updated successfully!", updatedRequest });
+
+  } catch (error) {
+      console.error("Error updating request status:", error);
+      res.status(500).json({ message: "Failed to update request status" });
+  }
+};

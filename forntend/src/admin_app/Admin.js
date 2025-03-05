@@ -52,7 +52,7 @@ const Admin = () => {
           Manage Users
         </button>
         <button
-          className={tab === "requests" ? "active" : ""}
+          className={tab === "UserRequests" ? "active" : ""}
           onClick={() => setTab("UserRequests")}
         >
           User Requests

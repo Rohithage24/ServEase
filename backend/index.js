@@ -51,7 +51,7 @@ server.delete('/delete/:id',Employee.deleteEmployee)
 // Requset Model
 server.post('/send-email', WorkRe.addREquest);
 server.get("/request" , WorkRe.getAllRequests)
-// server.get("/userReq/:id" , userjs.getRequser)
+server.put("/update-request-status", WorkRe.updateRequestStatus);
 
 
 // // Email transporter
