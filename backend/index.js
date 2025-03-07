@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const userjs = require("./user");
 const Employee = require("./Employee")
 const WorkRe = require("./WorkREq")
+const FeedBack = require("./Feedback")
+const Payment = require("./payment");
 
 const cors = require("cors");
 
@@ -52,6 +54,15 @@ server.delete('/delete/:id',Employee.deleteEmployee)
 server.post('/send-email', WorkRe.addREquest);
 server.get("/request" , WorkRe.getAllRequests)
 server.put("/update-request-status", WorkRe.updateRequestStatus);
+
+// Feed back
+// server.post('/feedba', FeedBack.addREquest);
+
+// Payment
+server.post("/save-payment",Payment.payment );
+server.get("/payments", Payment.getpay);
+
+
 
 
 // // Email transporter

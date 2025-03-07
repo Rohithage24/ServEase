@@ -13,11 +13,13 @@ const requestSchema = new mongoose.Schema({
     address: { type: String, required: true },
     serves: { type: String, required: true },
     description: { type: String, required: true },
+    payment:{type:String,require:true},
+    ORDER_ID:{ type: String, required: true },
     status:{type:String}
 });
 
 // ✅ 3. Create Mongoose Model
-const RequestModel = mongoose.model("WorkRequest", requestSchema);
+const RequestModel = mongoose.model("WorkReq", requestSchema);
 
 // // ✅ 4. Configure Nodemailer
 // const transporter = nodemailer.createTransport({
@@ -28,42 +30,48 @@ const RequestModel = mongoose.model("WorkRequest", requestSchema);
 //     }
 // });
 exports.addREquest = async (req, res) => {
-  const { to, subject, body, userData } = req.body;
-  console.log(req.body);
-  
-  
-  try {
-      const newRequest = new RequestModel({
-          userID: userData._id,
-          name: userData.fName,
-          email: userData.email,
-          contact:userData.mobile,
-          address:userData.address,
-          serves: subject,
-          description: body,
-          status:"pending"
-      });
+    try {
+        console.log("Received Request Body:", req.body);
 
-      await newRequest.save();
-      console.log("Request saved:", newRequest);
+        const { requestData,ORDER_ID, payment } = req.body;
 
-      // const mailOptions = {
-      //     from: "rohithage2244@gmail.com",
-      //     to: to,
-      //     subject: subject,
-      //     text: body
-      // };
+        if (!requestData || !requestData.userData) {
+            return res.status(400).json({ message: "Invalid request format. Missing userData." });
+        }
 
-      // await transporter.sendMail(mailOptions);
-      // console.log("Request sent successfully");
+        const { subject, body, price, userData } = requestData;
 
-      res.status(200).json({ message: "Request sent successfully!" });
+        if (!userData._id || !userData.fName || !userData.email || !ORDER_ID) {
+            return res.status(400).json({ message: "Missing required fields." });
+        }
 
-  } catch (error) {
-      console.error("Error processing request:", error);
-      res.status(500).json({ message: "Failed to process request" });
-  }
+        const newRequest = new RequestModel({
+            userID: userData._id,
+            name: userData.fName,
+            email: userData.email,
+            contact: userData.mobile,
+            address: userData.address,
+            serves: subject,
+            description: body,
+            ORDER_ID: ORDER_ID, // Now stored as a string
+            payment: payment || "Pending",
+            status: "pending"
+        });
+
+        await newRequest.save();
+        console.log(newRequest);
+        
+        console.log("✅ Request saved successfully:", newRequest);
+
+        res.status(200).json({ message: "Request saved successfully!", data: newRequest });
+
+    } catch (error) {
+        console.error("❌ Error saving request:", error);
+        res.status(500).json({ message: "Failed to process request", error: error.message });
+    }
 };
+
+  
 
 
 

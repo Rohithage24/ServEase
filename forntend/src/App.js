@@ -19,6 +19,8 @@ import EmployeD from "./Employee/EmployeD";
 
 // css
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Payment from "./component_web/Payment";
+import PaymentSuccess from "./component_web/PaymentSuccess";
 
 // import EditEmp from "./Employee/EditEmp";
 
@@ -52,8 +54,14 @@ const AppWrapper = () => {
         <Route path="/serves" element={<Serves />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/EmployeeList/:service" element={<EmployeeList />} />
+        <Route path="/EmployeeList/:service/:price" element={<EmployeeList />} /> 
         {/* <Route path="/Employee" element={<EmployeD />} /> */}
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/paysuce" element={<PaymentSuccess />} />
+
+
+        
+
 
 
 

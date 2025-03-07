@@ -9,7 +9,7 @@ function UserRequests() {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const response = await fetch("http://localhost:8080/request", {
+        const response = await fetch("https://servease-backend.onrender.com/request", {
           method: "GET",
           headers: { "Content-Type": "application/json" },
         });
@@ -47,7 +47,7 @@ function UserRequests() {
   // ✅ Update Request Status in Database
   const updateStatus = async (id, newStatus) => {
     try {
-      const response = await fetch("http://localhost:8080/update-request-status", {
+      const response = await fetch("https://servease-backend.onrender.com/update-request-status", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ requestId: id, status: newStatus }),

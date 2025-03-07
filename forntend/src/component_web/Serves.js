@@ -14,6 +14,7 @@ function Serves() {
       title: "Plumbing",
       description: "Fixing leaks, installing faucets, and maintaining pipelines.",
       link: "Plumbing",
+      Fees: 200
     },
     {
       id: 2,
@@ -21,6 +22,8 @@ function Serves() {
       title: "Electrical Repairs",
       description: "Wiring, circuit repairs, and installation of electrical appliances.",
       link: "Electrical",
+      Fees: 200
+
     },
     {
       id: 3,
@@ -28,6 +31,8 @@ function Serves() {
       title: "Air Condition Maintainance",
       description: "Furniture repairs, custom woodwork, and installations.",
       link: "Air Condition Maintainance",
+      Fees: 800
+
     },
     {
       id: 4,
@@ -35,6 +40,8 @@ function Serves() {
       title: "Appliance Maintenance",
       description: "Repair and servicing of home appliances like refrigerators, ACs, and washing machines.",
       link: "Appliance",
+      Fees: 200
+
     },
     {
       id: 5,
@@ -42,6 +49,8 @@ function Serves() {
       title: "Automobile Services",
       description: "Convenient car washing, detailing, and repair services at your location.",
       link: "Automobile",
+      Fees: 200
+
     },
     {
       id: 6,
@@ -49,13 +58,15 @@ function Serves() {
       title: "Cleaning Services",
       description: "Professional house cleaning, pest control, and laundry services for a spotless space.",
       link: "Automobile",
+      Fees: 500
+
     },
   ];
 
-  const serverHendal = (link) => {
-   
-    navigate(`/EmployeeList/${link}`);
+  const serverHendal = (link, fees) => {
+    navigate(`/EmployeeList/${link}/${fees}`);
   };
+  
 
   return (
     <>
@@ -76,7 +87,7 @@ function Serves() {
                   <div className="detail-box pointer">
                     <h4>{service.title}</h4>
                     <p>{service.description}</p>
-                    <a onClick={() => serverHendal(service.link)}>
+                    <a onClick={() => serverHendal(service.link,service.Fees)}>
                       Read More
                       <i class="bi bi-arrow-right"></i>
                     </a>

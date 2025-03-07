@@ -8,10 +8,11 @@ import RequestFrom from "./RequestFrom";
 function EmployeeList() {
     const [auth, setAuth] = useAuth();
     const navigate = useNavigate();
-    const { service } = useParams();
     const [employees, setEmployees] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const { service, price } = useParams();
+
 
     // Redirect to login if user is not authenticated
     useEffect(() => {
@@ -27,7 +28,8 @@ function EmployeeList() {
         <div>
         <Navber />
 
-        <RequestFrom  service={service} />
+        <RequestFrom service={service} price={price} />
+
 
 
         

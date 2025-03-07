@@ -1,16 +1,22 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-
-const servesSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    email: { type: String, required: true },
-    contact: { type: Number, required: true },
-    address: { type: String, required: true },
-    serves: { type: String, required: true },
-    description: { type: String, required: true },
-    status:{type:String}
+const serviceSchema = new mongoose.Schema({
+    image: String,
+    title: String,
+    description: String,
+    link: String,
+    Fees: Number
 });
 
+const Service = mongoose.model('Service', serviceSchema);
 
 
-const ServesModel = mongoose.model("Serves", servesSchema);
+router.post('/add-service', async (req, res) => {
+    try {
+        const newService = new Service(req.body);
+        await newService.save();
+        res.status(201).json({ message: 'Service added successfully', data: newService });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
