@@ -11,6 +11,7 @@ const requestSchema = new mongoose.Schema({
     email: { type: String, required: true },
     contact: { type: Number, required: true },
     address: { type: String, required: true },
+    pinCode: Number,
     serves: { type: String, required: true },
     description: { type: String, required: true },
     payment:{type:String,require:true},
@@ -21,14 +22,7 @@ const requestSchema = new mongoose.Schema({
 // ✅ 3. Create Mongoose Model
 const RequestModel = mongoose.model("WorkReq", requestSchema);
 
-// // ✅ 4. Configure Nodemailer
-// const transporter = nodemailer.createTransport({
-//     service: "gmail",
-//     auth: {
-//         user: "rohithage2244@gmail.com", // Your email
-//         pass: "imvl nowj dmrp jrom" // Your App Password
-//     }
-// });
+
 exports.addREquest = async (req, res) => {
     try {
         console.log("Received Request Body:", req.body);
@@ -51,6 +45,7 @@ exports.addREquest = async (req, res) => {
             email: userData.email,
             contact: userData.mobile,
             address: userData.address,
+            pinCode:userData.pinCode,
             serves: subject,
             description: body,
             ORDER_ID: ORDER_ID, // Now stored as a string
@@ -83,6 +78,25 @@ exports.getAllRequests = async (req, res) => {
       console.error("Error fetching requests:", error);
       res.status(500).json({ message: "Failed to fetch requests" });
   }
+};
+
+
+exports.getRequestById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        // console.log(id);
+        
+        const request = await RequestModel.findById(id); // Fetch specific request
+
+        if (!request) {
+            return res.status(404).json({ message: "Request not found" });
+        }
+
+        res.status(200).json(request);
+    } catch (error) {
+        console.error("Error fetching request:", error);
+        res.status(500).json({ message: "Failed to fetch request" });
+    }
 };
 
 

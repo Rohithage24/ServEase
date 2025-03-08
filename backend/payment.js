@@ -41,6 +41,25 @@ const paymentSchema = new mongoose.Schema({
     }
   }
   
+
+  exports.getpay_orderId = async (req, res) => {
+    try {
+        const { ORDER_ID } = req.params;
+        // console.log("Fetching payment for ORDER_ID:", ORDER_ID);
+        
+       
+        const payment = await Payment.findOne({ orderId: ORDER_ID });
+
+        if (!payment) {
+            return res.status(404).json({ success: false, message: "Payment not found" });
+        }
+
+        res.status(200).json({ success: true, data: payment });
+    } catch (error) {
+        console.error("Error fetching payment:", error);
+        res.status(500).json({ success: false, message: "Failed to fetch payment", error });
+    }
+};
   
   
 

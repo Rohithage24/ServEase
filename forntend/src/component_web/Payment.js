@@ -25,6 +25,7 @@ const Payment = () => {
       return;
     }
        
+       console.log(requestData);
        
 
     const data = {
@@ -47,7 +48,7 @@ const Payment = () => {
     };
 
     try {
-        const request = await fetch("https://servease-backend.onrender.com/send-email", {
+        const request = await fetch("http://localhost:8080/send-email", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"

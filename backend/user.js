@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
   password: String,
   mobile: Number,
   address: String,
+  pinCode: Number,
   aadhaarId: Number,
 });
 

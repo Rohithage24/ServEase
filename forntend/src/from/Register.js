@@ -8,6 +8,7 @@ export default function Register() {
     const [mobile, setMobile] = useState('');
     const [address, setAddress] = useState('');
     const [aadhaarId, setAadhaarId] = useState('');
+    const [pinCode , setPincode ] = useState('');
     const [error, setError] = useState('');
 
     const navigate = useNavigate();
@@ -16,10 +17,10 @@ export default function Register() {
         e.preventDefault();
 
         try {
-            const response = await fetch("https://servease-backend.onrender.com/user", {
+            const response = await fetch("http://localhost:8080/user", {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ fName, email, password, mobile, address, aadhaarId })
+                body: JSON.stringify({ fName, email, password, mobile, address , pinCode , aadhaarId })
             });
 
             const data = await response.json();
@@ -164,6 +165,16 @@ export default function Register() {
                         placeholder="Enter Your Address"
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
+                        required
+                        style={styles.input}
+                        onMouseOver={(e) => e.target.style.background = styles.inputHover.background}
+                        onMouseOut={(e) => e.target.style.background = styles.input.background}
+                    />
+                     <input
+                        type="text"
+                        placeholder="Enter Your Pin code"
+                        value={pinCode}
+                        onChange={(e) => setPincode(e.target.value)}
                         required
                         style={styles.input}
                         onMouseOver={(e) => e.target.style.background = styles.inputHover.background}

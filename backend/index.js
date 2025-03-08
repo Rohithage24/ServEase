@@ -44,6 +44,7 @@ server.delete("/deleteuser/:id", userjs.deleteuser);
 server.get("/EmploGet", Employee.getAllEmployees);
 server.get('/find/:service', Employee.FindEmployees);
 server.post('/EmployoLogin',Employee.getEmployee)
+server.post("/addemp",Employee.FindEmplmany)
 
 server.post("/Employee", Employee.addEmployee);
 server.get("/image/:filename",Employee.getImage)
@@ -51,9 +52,11 @@ server.get('/emp/:id',Employee.FindEmpl)
 server.delete('/delete/:id',Employee.deleteEmployee)
 
 // Requset Model
-server.post('/send-email', WorkRe.addREquest);
-server.get("/request" , WorkRe.getAllRequests)
+server.post('/sendRequest', WorkRe.addREquest);
+server.get("/request" , WorkRe.getAllRequests);
 server.put("/update-request-status", WorkRe.updateRequestStatus);
+server.get("/getRequest/:id", WorkRe.getRequestById);
+
 
 // Feed back
 // server.post('/feedba', FeedBack.addREquest);
@@ -61,6 +64,8 @@ server.put("/update-request-status", WorkRe.updateRequestStatus);
 // Payment
 server.post("/save-payment",Payment.payment );
 server.get("/payments", Payment.getpay);
+server.get("/payme/:ORDER_ID", Payment.getpay_orderId);
+
 
 
 

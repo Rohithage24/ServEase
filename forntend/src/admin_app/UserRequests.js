@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import "./Admin.css";
 
 function UserRequests() {
   const [requests, setRequests] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchRequests = async () => {
@@ -53,7 +55,11 @@ function UserRequests() {
         body: JSON.stringify({ requestId: id, status: newStatus }),
       });
 
-      if (!response.ok) throw new Error("Failed to update request");
+      if (!response.ok) {
+        throw new Error("Failed to update request");
+        }else{
+          navigate(`/admin/accept/${id}`);
+        }
 
       // Update UI after successful request
       setRequests((prevRequests) =>

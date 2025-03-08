@@ -200,3 +200,24 @@ exports.FindEmpl = async (req, res) => {
     res.status(500).send({ message: "Error fetching employees", error: err });
   }
 };
+
+
+exports.FindEmplmany = async (req, res) => {
+  const { pinCode, Server } = req.body;
+  console.log(req.body);
+   // Destructure pinCode and serves from req.params
+
+  try {
+    const employees = await modelEmployee.find(req.body).exec();
+
+    console.log("Employee:", employees);
+
+    res.status(200).send({
+      message: "Employees fetched successfully",
+      employees: employees,
+    });
+  } catch (err) {
+    console.error("Error fetching employees:", err);
+    res.status(500).send({ message: "Error fetching employees", error: err });
+  }
+};
