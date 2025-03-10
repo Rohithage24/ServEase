@@ -17,7 +17,7 @@ export default function Register() {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:8080/user", {
+            const response = await fetch(`${process.env.REACT_APP_backrnd_api}user`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ fName, email, password, mobile, address , pinCode , aadhaarId })
@@ -39,6 +39,10 @@ export default function Register() {
             console.error("Error:", error);
         }
     };
+
+    // console.log("env",process.env.BACKEND_api);
+    // console.log('env2',process.env.REACT_APP_backrnd_api);
+    
 
     const styles = {
         container: {

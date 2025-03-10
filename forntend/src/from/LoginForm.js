@@ -33,7 +33,7 @@ const LoginForm = () => {
       return;
     } else {
       try {
-        const response = await fetch('https://servease-backend.onrender.com/login', {
+        const response = await fetch('${process.env.REACT_APP_backrnd_api}login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -59,6 +59,10 @@ const LoginForm = () => {
       }
     }
   };
+
+
+  console.log("env",process.env.backrnd_api);
+  
 
   const goToRegister = () => {
     navigate('/register');

@@ -11,7 +11,7 @@ function UsersManagement() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch("https://servease-backend.onrender.com/userall", {
+        const response = await fetch("userall", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

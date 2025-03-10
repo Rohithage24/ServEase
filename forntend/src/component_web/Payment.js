@@ -48,7 +48,7 @@ const Payment = () => {
     };
 
     try {
-        const request = await fetch("http://localhost:8080/send-email", {
+        const request = await fetch("http://localhost:8080/sendRequest", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"
@@ -58,7 +58,7 @@ const Payment = () => {
   
 
 
-      const response = await fetch("https://servease-backend.onrender.com/save-payment", {
+      const response = await fetch(`${process.env.REACT_APP_backrnd_api}save-payment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
