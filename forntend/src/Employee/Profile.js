@@ -25,7 +25,7 @@ function Profile() {
             <div className="card text-center mb-4">
               <div className="card-body">
                 <img
-                  src={`${process.env.REACT_APP_backrnd_api}image/${employee.image}`}
+                  src={`${process.env.REACT_APP_API_BASE_URL}image/${employee.image}`}
                   alt="User Avatar"
                   className="rounded-circle img-fluid"
                   style={{ width: "150px" }}

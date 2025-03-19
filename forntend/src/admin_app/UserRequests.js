@@ -11,7 +11,9 @@ function UserRequests() {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_backrnd_api}request`, {
+        console.log(process.env.REACT_APP_API_BASE_URL);
+        
+        const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}request`, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
         });
@@ -49,17 +51,9 @@ function UserRequests() {
   // ✅ Update Request Status in Database
   const updateStatus = async (id, newStatus) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_backrnd_api}update-request-status`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ requestId: id, status: newStatus }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to update request");
-        }else{
+      
           navigate(`/admin/accept/${id}`);
-        }
+       
 
       // Update UI after successful request
       setRequests((prevRequests) =>
@@ -91,7 +85,8 @@ function UserRequests() {
           {requests.map((req) => (
             <React.Fragment key={req._id}>
               <tr>
-                <td>{req.name}</td>
+              
+                <td>{req.name.charAt(0).toUpperCase() + req.name.slice(1)}</td>
                 <td>{req.contact}</td>
                 <td>{req.email}</td>
                 <td>

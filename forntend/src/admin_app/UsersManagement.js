@@ -11,7 +11,7 @@ function UsersManagement() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch("userall", {
+        const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}userall`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -66,7 +66,7 @@ function UsersManagement() {
     console.log(id);
 
     try {
-      const response = await fetch(`https://servease-backend.onrender.com${id}`, {
+      const response = await fetch(`http://localhost:8080/deleteuser/${id}`, {
         method: "DELETE",
       });
       console.log(response);
@@ -105,7 +105,7 @@ function UsersManagement() {
         <tbody>
           {Array.isArray(User) && User.map((user, index) => (
             <tr key={index}>
-              <td>{user.fName}</td>
+              <td>{user.fName.charAt(0).toUpperCase() + user.fName.slice(1)} </td>
               <td>{user.Age}</td>
               <td>{user.email}</td>
               <td>{user.mobile}</td>

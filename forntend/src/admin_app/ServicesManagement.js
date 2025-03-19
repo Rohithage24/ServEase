@@ -13,7 +13,7 @@ const ServicesManagement = () => {
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_backrnd_api}EmploGet`, {
+        const response = await fetch(`https://servease-backend.onrender.com/EmploGet`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -64,7 +64,7 @@ const ServicesManagement = () => {
   //Delete employee
   const DeleteHandel = async (id) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_backrnd_api}delete/${id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}delete/${id}`, {
         method: "DELETE",
       });
 
@@ -105,7 +105,7 @@ const ServicesManagement = () => {
         <tbody>
           {Array.isArray(employees) && employees.map((employee, index) => (
             <tr key={index}>
-              <td>{employee.Name}</td>
+              <td className="col-md-4">{employee.Name}</td>
               <td>{employee.Age}</td>
               <td>{employee.Gmail}</td>
               <td>{employee.phone}</td>

@@ -31,7 +31,7 @@ function Request() {
       const id = auth.user._id;
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_backrnd_api}request/${id}`,
+          `${process.env.REACT_APP_API_BASE_URL}request/${id}`,
           {
             method: "GET",
             headers: {
@@ -52,7 +52,7 @@ function Request() {
         const userDetails = {};
         for (const req of requests) {
           const res = await fetch(
-            `${process.env.REACT_APP_backrnd_api}userReq/${req.userId}`,
+            `${process.env.REACT_APP_API_BASE_URL}userReq/${req.userId}`,
             {
               method: "GET",
               headers: {

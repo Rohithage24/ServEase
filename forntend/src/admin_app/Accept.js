@@ -16,7 +16,7 @@ function Accept () {
   useEffect(() => {
     const fetchRequestById = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/getRequest/${id}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}getRequest/${id}`, {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
         })
@@ -29,7 +29,7 @@ function Accept () {
 
         if (requestData.ORDER_ID) {
           const paymentResponse = await fetch(
-            `http://localhost:8080/payme/${requestData.ORDER_ID}`,
+            `${process.env.REACT_APP_API_BASE_URL}payme/${requestData.ORDER_ID}`,
             {
               method: 'GET',
               headers: { 'Content-Type': 'application/json' }
@@ -46,7 +46,7 @@ function Accept () {
         if (requestData.pinCode) {
           const pinCode = requestData.pinCode
           const Server = requestData.serves
-          const profes = await fetch(`http://localhost:8080/addemp`, {
+          const profes = await fetch(`${process.env.REACT_APP_API_BASE_URL}addemp`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ Server, pinCode })
@@ -112,7 +112,7 @@ function Accept () {
     }
 
     try {
-      const response = await fetch('http://localhost:8080/send-email', {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}send-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(emailData)
@@ -132,7 +132,7 @@ function Accept () {
         message: `Dear ${employee.Name},\n\nYou have been assigned to a service request. Please visit the following location on **${formattedVisitDate}**.\n\nUser Details:\n- **Name:** ${request.name}\n- **Address:** ${request.address}\n- **Service:** ${employee.Server}\n\nPlease ensure timely arrival.\n\nBest Regards,\nYour Company Name`
       }
 
-      await fetch('http://localhost:8080/send-email', {
+      await fetch(`${process.env.REACT_APP_API_BASE_URL}send-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(professionalEmailData)
@@ -140,11 +140,11 @@ function Accept () {
     })
 
     const updateResponse = await fetch(
-      'http://localhost:8080/update-request-status',
+      `${process.env.REACT_APP_API_BASE_URL}update-request-status`,
       {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ requestId: id, status: 'Work in Progress' })
+        body: JSON.stringify({ requestId: id, status: 'accepted' })
       }
     )
 
@@ -160,7 +160,7 @@ function Accept () {
     navigate('/admin')
 
     // try {
-    //     const response = await fetch("http://localhost:8080/send-pro", {
+    //     const response = await fetch("${process.env.REACT_APP_API_BASE_URL}send-pro", {
     //       method: "POST",
     //       headers: { "Content-Type": "application/json" },
     //       body: JSON.stringify(),
@@ -184,7 +184,7 @@ function Accept () {
         <h2 style={styles.heading}>Request Details</h2>
         <div style={styles.infoBox}>
           <p>
-            <strong>Name:</strong> {request.name}
+          <strong>Name:</strong> {request.name.charAt(0).toUpperCase() + request.name.slice(1)}
           </p>
           <p>
             <strong>Email:</strong> {request.email}
@@ -267,9 +267,9 @@ function Accept () {
                     style={styles.checkbox}
                   />
                 </td>
-                <td style={styles.td}>{employee.Name}</td>
-                <td style={styles.td}>{employee.Server}</td>
-                <td style={styles.td}>{employee.phone}</td>
+                <td style={styles.td}>{employee?.Name}</td>
+                <td style={styles.td}>{employee?.Server}</td>
+                <td style={styles.td}>{employee?.phone}</td>
               </tr>
             ))}
           </tbody>
