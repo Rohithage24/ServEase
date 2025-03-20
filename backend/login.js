@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 exports.getuser = async (req, res) => {
     try {
       const gmail = req.params.gmail;
-      console.log('Fetching user with email:', gmail);
+//console.log('Fetching user with email:', gmail);
   
     
       const user = await modelUser .findOne({ email: gmail });

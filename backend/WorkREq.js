@@ -27,7 +27,7 @@ const RequestModel = mongoose.model("WorkReq", requestSchema);
 
 exports.addREquest = async (req, res) => {
     try {
-        console.log("Received Request Body:", req.body);
+  //console.log("Received Request Body:", req.body);
 
         const { requestData,ORDER_ID, payment } = req.body;
 
@@ -57,9 +57,9 @@ exports.addREquest = async (req, res) => {
         });
 
         await newRequest.save();
-        console.log(newRequest);
+  //console.log(newRequest);
         
-        console.log("✅ Request saved successfully:", newRequest);
+  //console.log("✅ Request saved successfully:", newRequest);
 
         res.status(200).json({ message: "Request saved successfully!", data: newRequest });
 
@@ -107,7 +107,7 @@ exports.getRequestById = async (req, res) => {
 exports.updateRequestStatus = async (req, res) => {
   try {
       const { requestId, status ,selectedEmployees} = req.body;
-      console.log(selectedEmployees);
+//console.log(selectedEmployees);
       
 
       // Validate if status is provided

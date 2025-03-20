@@ -79,7 +79,7 @@ server.listen(8080, () => {
     const request = await modelWork.find({employeeId:id})
     if (request) {
         res.status(200).json({ message: "request  found", request });
-      console.log(request);
+//console.log(request);
         
     }else  {
     res.status(404).json({ message: "this error" , error });
@@ -139,7 +139,7 @@ server.listen(8080, () => {
         });
   
         await newRequest.save();
-        console.log("Request saved:", newRequest);
+  //console.log("Request saved:", newRequest);
   
         const mailOptions = {
             from: "rohithage2244@gmail.com",
@@ -149,7 +149,7 @@ server.listen(8080, () => {
         };
   
         await transporter.sendMail(mailOptions);
-        console.log("Email sent successfully");
+  //console.log("Email sent successfully");
   
         res.status(200).json({ message: "Request added & Email sent successfully!" });
   

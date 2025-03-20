@@ -171,7 +171,7 @@ exports.getEmployee = async (req, res) => {
       if (user.Password == Password) {
           // If the user exists, send a success response
           res.status(200).json({ message: 'User  found', user });
-          console.log(user);
+    //console.log(user);
           
       } else {
           // If the user does not exist, send a 404 response

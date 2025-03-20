@@ -29,7 +29,7 @@ exports.sendmail = async (req, res) => {
 
     try {
          const info = await transporter.sendMail(mailOptions);
-        console.log("Email sent:", info.response);
+  //console.log("Email sent:", info.response);
         res.status(200).json({ success: true, message: "Email sent successfully!" });
     } catch (error) {
         console.error("Error sending email:", error);
@@ -57,7 +57,7 @@ exports.sendmailtoprof = async (req, res) => {
 
     try {
         // const info = await transporter.sendMail(mailOptions);
-        console.log("Email sent:", info.response);
+  //console.log("Email sent:", info.response);
         res.status(200).json({ success: true, message: "Email sent successfully!" });
     } catch (error) {
         console.error("Error sending email:", error);

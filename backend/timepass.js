@@ -130,7 +130,7 @@ const Se = ({ service }) => {
 
         const emailData = { to, subject, body, name, connect };
 
-        console.log(emailData);
+  //console.log(emailData);
 
 
 
