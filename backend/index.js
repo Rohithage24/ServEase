@@ -62,10 +62,15 @@ server.post('/sendRequest', WorkRe.addREquest);
 server.get("/request" , WorkRe.getAllRequests);
 server.put("/update-request-status", WorkRe.updateRequestStatus);
 server.get("/getRequest/:id", WorkRe.getRequestById);
+server.get("/getRequestUser/:id", WorkRe.getRequestByuser);
+
 
 
 // Feed back
-// server.post('/feedba', FeedBack.addREquest);
+server.post("/feedback",FeedBack.feedbackpo );
+
+// ➤ Submit feedback
+server.get("/getFeed",FeedBack.getAllfeedback );
 
 // Payment
 server.post("/save-payment",Payment.payment );

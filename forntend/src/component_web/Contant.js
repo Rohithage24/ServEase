@@ -1,10 +1,95 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link ,useNavigate } from "react-router-dom";
+import { useAuth } from "../context/auth";
+
+
 
 function Contant() {
+  const [request , setRequests ] = useState();
+    const [auth, setAuth] = useAuth();
+    const navigate = useNavigate();
+    // console.log(auth.user._id);
+    // const id = auth.user._id
+    const id = auth?.user?._id;
+
+    
+  
+
+    useEffect(() => {
+      if (!id) return;
+      const fetchRequests = async () => {
+        try {
+          console.log(process.env.REACT_APP_API_BASE_URL);
+          
+          const response = await fetch(`http://localhost:8080/getRequestUser/${id} `, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+          });
+  
+          if (!response.ok) throw new Error("Network response was not ok");
+  
+          const data = await response.json();
+          console.log(data);
+          
+  
+          // Ensure each request has `showDetails: false`
+          const formattedRequests = data.map((req) => ({
+            ...req,
+            showDetails: false,
+          }));
+  
+          setRequests(formattedRequests);
+        } catch (error) {
+          console.error("Error fetching requests:", error);
+        }
+      };
+  
+      fetchRequests();
+    }, []);
+
+
+    const handleComplete = async (requestId) => {
+      try {
+        const updateResponse = await fetch(
+          `${process.env.REACT_APP_API_BASE_URL}update-request-status`,
+          {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ requestId:requestId , status: 'Complete' })
+          }
+        )
+  
+        if (!updateResponse.ok) throw new Error("Failed to update request");
+
+        navigate(`/Feedvack/${requestId}`);
+  
+        // Update the local state
+        setRequests((prevRequests) =>
+          prevRequests.map((req) =>
+            req._id === requestId ? { ...req, status: "complete" } : req
+          )
+        );
+      } catch (error) {
+        console.error("Error updating request:", error);
+      }
+    };
   return (
     <>
       <section className="slider_section sider">
+        <div className="Feedback">
+          {/* <h2>Server on Working</h2> */}
+          {request?.filter((request) => request.status === "accepted")?.map((request) =>  (
+              <div key={request._id} className="service-box">
+                <h5>{request.serves} is Working</h5>
+                <p><strong>Name:</strong> {request.name}</p>
+                <p><strong>Status:</strong> {request.status}</p>
+                <button onClick={() => handleComplete(request._id)} className="complete-btn">
+                  Mark as Complete
+                </button>
+              </div>
+            ))}
+
+        </div>
         <div
           id="customCarousel1"
           className="carousel slide"

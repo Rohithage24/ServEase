@@ -22,6 +22,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Payment from "./component_web/Payment";
 import PaymentSuccess from "./component_web/PaymentSuccess";
 import Accept from "./admin_app/Accept";
+import FeedbackForm from "./page/FeedbackForm";
 
 // import EditEmp from "./Employee/EditEmp";
 
@@ -60,6 +61,8 @@ const AppWrapper = () => {
         <Route path="/payment" element={<Payment />} />
         <Route path="/paysuce" element={<PaymentSuccess />} />
         <Route path="/admin/accept/:id" element={<Accept />} />
+        <Route path="/Feedvack/:requestId" element={<FeedbackForm />} />
+
 
 
 

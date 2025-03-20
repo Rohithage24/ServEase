@@ -21,3 +21,49 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+
+  useEffect(() => {
+    fetchReviews();
+  }, []);
+
+  const handleRating = (value) => setRating(value);
+
+  const handleOptionChange = (question, value) => {
+    setSelectedOptions((prev) => ({ ...prev, [question]: value }));
+  };
+
+  const fetchReviews = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/getFeed");
+      const data = await response.json();
+      setReviews(data);
+      const avg =
+        data.reduce((sum, review) => sum + review.rating, 0) / data.length;
+      setAverageRating(avg.toFixed(1));
+    } catch (error) {
+      console.error("Error fetching reviews:", error);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newFeedback = { rating, selectedOptions, feedback };
+    console.log(newFeedback);
+    
+    try {
+      await fetch("http://localhost:8080/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newFeedback),
+      });
+      alert("Feedback submitted successfully!");
+      setRating(0);
+      setSelectedOptions({});
+      setFeedback("");
+      fetchReviews();
+    } catch (error) {
+      console.error("Error submitting feedback:", error);
+    }
+  };

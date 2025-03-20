@@ -2,43 +2,40 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 
-const FeedbackSchema = new mongoose.Schema({
-  userID: { type: mongoose.Schema.Types.ObjectId, required: true },
-  email: { type: String, required: true },
-  serves: { type: String, required: true },
-  description: { type: String, required: true },
-  status: { type: String, default: "pending" }, // Default status
+const feedbackSchema = new mongoose.Schema({
+  rating: Number,
+  selectedOptions: {
+      timely: String,
+      behavior: String
+  },
+  feedback: String
 });
 
-// ✅ Create Mongoose Model
-const FeedModel = mongoose.model("FeedBack", FeedbackSchema);
+const Feedback = mongoose.model("Feedback", feedbackSchema);
 
-exports.adduser = async (req, res) => {
+
+exports.getAllfeedback = async (req, res) => {
   try {
-    const { userID, email, serves, description, status } = req.body;
-
-    // Validate required fields
-    if (!userID || !email || !serves || !description) {
-      return res.status(400).json({ message: "All fields are required!" });
-    }
-
-    // Create new feedback entry
-    const newFeedback = new FeedModel({
-      userID,
-      email,
-      serves,
-      description,
-      status: status || "pending", // Default value
-    });
-
-    // Save to MongoDB
-    await newFeedback.save();
-    res.status(201).json({ message: "Feedback submitted successfully!" });
+      const feedbacks = await Feedback.find();
+      res.json(feedbacks);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server Error" });
+      res.status(500).json({ error: "Server error" });
   }
 }
+
+
+exports.feedbackpo = async (req, res) => {
+  try {
+    console.log(req.body);
+    
+      const newFeedback = new Feedback(req.body);
+      await newFeedback.save();
+      res.json({ message: "Feedback saved!" });
+  } catch (error) {
+      res.status(500).json({ error: "Error saving feedback" });
+  }
+}
+
 
 
 

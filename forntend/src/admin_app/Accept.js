@@ -112,7 +112,7 @@ function Accept () {
     }
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}send-email`, {
+      const response = await fetch(`http://localhost:8080/send-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(emailData)
@@ -132,7 +132,7 @@ function Accept () {
         message: `Dear ${employee.Name},\n\nYou have been assigned to a service request. Please visit the following location on **${formattedVisitDate}**.\n\nUser Details:\n- **Name:** ${request.name}\n- **Address:** ${request.address}\n- **Service:** ${employee.Server}\n\nPlease ensure timely arrival.\n\nBest Regards,\nYour Company Name`
       }
 
-      await fetch(`${process.env.REACT_APP_API_BASE_URL}send-email`, {
+      await fetch(`http://localhost:8080/send-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(professionalEmailData)
@@ -140,11 +140,11 @@ function Accept () {
     })
 
     const updateResponse = await fetch(
-      `${process.env.REACT_APP_API_BASE_URL}update-request-status`,
+      `http://localhost:8080/update-request-status`,
       {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ requestId: id, status: 'accepted' })
+        body: JSON.stringify({ requestId: id, status: 'accepted',selectedEmployees: selectedEmployees.map(emp => emp._id)  })
       }
     )
 
@@ -157,7 +157,7 @@ function Accept () {
       alert('Failed to update request status.')
     }
 
-    navigate('/admin')
+    // navigate('/admin')
 
     // try {
     //     const response = await fetch("${process.env.REACT_APP_API_BASE_URL}send-pro", {

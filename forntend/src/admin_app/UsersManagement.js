@@ -66,7 +66,7 @@ function UsersManagement() {
     console.log(id);
 
     try {
-      const response = await fetch(`http://localhost:8080/deleteuser/${id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}${id}`, {
         method: "DELETE",
       });
       console.log(response);

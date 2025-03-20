@@ -16,7 +16,9 @@ const requestSchema = new mongoose.Schema({
     description: { type: String, required: true },
     payment:{type:String,require:true},
     ORDER_ID:{ type: String, required: true },
-    status:{type:String}
+    status:{type:String ,require:true},
+    employee:{type:Array , require:true}
+
 });
 
 // ✅ 3. Create Mongoose Model
@@ -50,7 +52,8 @@ exports.addREquest = async (req, res) => {
             description: body,
             ORDER_ID: ORDER_ID, // Now stored as a string
             payment: payment || "Pending",
-            status: "pending"
+            status: "pending",
+            employee:[],
         });
 
         await newRequest.save();
@@ -103,7 +106,9 @@ exports.getRequestById = async (req, res) => {
 
 exports.updateRequestStatus = async (req, res) => {
   try {
-      const { requestId, status } = req.body;
+      const { requestId, status ,selectedEmployees} = req.body;
+      console.log(selectedEmployees);
+      
 
       // Validate if status is provided
       if (!requestId || !status) {
@@ -112,7 +117,7 @@ exports.updateRequestStatus = async (req, res) => {
 
       const updatedRequest = await RequestModel.findByIdAndUpdate(
           requestId,
-          { status: status },
+          { status: status ,employee: selectedEmployees },
           { new: true }
       );
 
@@ -126,4 +131,22 @@ exports.updateRequestStatus = async (req, res) => {
       console.error("Error updating request status:", error);
       res.status(500).json({ message: "Failed to update request status" });
   }
+};
+
+exports.getRequestByuser = async (req, res) => {
+    try {
+        const { id } = req.params;
+        // console.log(id);
+        
+        const request = await RequestModel.find({userID:id}); // Fetch specific request
+
+        if (!request) {
+            return res.status(404).json({ message: "Request not found" });
+        }
+
+        res.status(200).json(request);
+    } catch (error) {
+        console.error("Error fetching request:", error);
+        res.status(500).json({ message: "Failed to fetch request" });
+    }
 };

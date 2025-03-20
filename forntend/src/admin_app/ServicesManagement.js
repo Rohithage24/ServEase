@@ -13,7 +13,7 @@ const ServicesManagement = () => {
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
-        const response = await fetch(`https://servease-backend.onrender.com/EmploGet`, {
+        const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}EmploGet`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

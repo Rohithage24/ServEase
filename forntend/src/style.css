@@ -67,3 +67,44 @@
   /* Contant code css */
 
   
+  /* Feedback */
+
+.Feedback{
+  position: fixed;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  /* width: 20%;
+  height: 20%; */
+  background: rgba(0, 0, 0, 0.8); /* Dark transparent background */
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+
+.service-box {
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.complete-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.complete-btn:hover {
+  background: #218838;
+}
