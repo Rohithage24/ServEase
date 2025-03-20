@@ -1,5 +1,8 @@
 import React from "react";
 import './navber.css'
+import { Link, useLocation } from "react-router-dom";
+
+
 
 function About() {
   return (
@@ -24,7 +27,7 @@ function About() {
                   Our mission is to simplify your everyday tasks by bringing the
                   right professionals to your doorstep.{" "}
                 </p>
-                <a className="btn " href="">Read More</a>
+                <Link className="btn " to="" >Read More</Link>
               </div>
             </div>
             <div className="col-md-6 ">

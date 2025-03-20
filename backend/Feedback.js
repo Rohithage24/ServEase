@@ -8,7 +8,13 @@ const feedbackSchema = new mongoose.Schema({
       timely: String,
       behavior: String
   },
-  feedback: String
+  feedback: String,
+  orderID:{type:String},
+  userID:{type:String},
+  reqID:{type:String},
+  employee:{type:Array},
+
+
 });
 
 const Feedback = mongoose.model("Feedback", feedbackSchema);

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useAuth } from '../context/auth'
 import { useParams, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify' // Import toast notifications
+
 
 const FeedbackForm = () => {
   const [rating, setRating] = useState(0)
@@ -48,7 +50,7 @@ const FeedbackForm = () => {
           if (!paymentResponse.ok) throw new Error('Failed to fetch payment')
 
           const paymentData = await paymentResponse.json()
-          console.log(paymentData)
+        //   console.log(paymentData)
           setPayment(paymentData.data)
         }
       } catch (error) {
@@ -75,7 +77,7 @@ const FeedbackForm = () => {
 
   const fetchReviews = async () => {
     try {
-      const response = await fetch('http://localhost:8080/getFeed')
+      const response = await fetch('${process.env.REACT_APP_API_BASE_URL}getFeed')
       const data = await response.json()
       setReviews(data)
       const avg =
@@ -86,26 +88,47 @@ const FeedbackForm = () => {
     }
   }
 
-  const handleSubmit = async e => {
-    e.preventDefault()
-    const newFeedback = { rating, selectedOptions, feedback }
-    console.log(newFeedback)
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+  
+    const newFeedback = {
+      rating,
+      selectedOptions,
+      feedback,
+      orderID: request.ORDER_ID,
+      userID: request.userID,
+      reqID: request._id,
+      employee: request.employee
+    }
+  
+    console.log('Submitting Feedback:', newFeedback)
+  
     try {
-      await fetch('http://localhost:8080/feedback', {
+      const response = await fetch('${process.env.REACT_APP_API_BASE_URL}feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newFeedback)
       })
-      alert('Feedback submitted successfully!')
+  
+      if (!response.ok) throw new Error('Failed to submit feedback')
+  
+      toast.success('Feedback submitted successfully!', { position: 'top-right' })
+  
+      // Reset feedback form
       setRating(0)
       setSelectedOptions({})
       setFeedback('')
+  
+      navigate("/")
+      // Refresh reviews
       fetchReviews()
     } catch (error) {
       console.error('Error submitting feedback:', error)
+      toast.error('Failed to submit feedback. Please try again.', { position: 'top-right' })
     }
   }
+  
 
   return (
     <div style={styles.container}>

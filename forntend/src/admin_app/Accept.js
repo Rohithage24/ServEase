@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function Accept () {
   const { id } = useParams()
@@ -112,14 +114,17 @@ function Accept () {
     }
 
     try {
-      const response = await fetch(`http://localhost:8080/send-email`, {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}send-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(emailData)
       })
 
       const data = await response.json()
-      alert(data.message) // Show success or failure message
+      //alert(data.message) // Show success or failure message
+      toast.success(data.message, { position: 'top-right' })
+
+      
     } catch (error) {
       console.error('Error:', error)
       alert('Failed to send email')
@@ -132,7 +137,7 @@ function Accept () {
         message: `Dear ${employee.Name},\n\nYou have been assigned to a service request. Please visit the following location on **${formattedVisitDate}**.\n\nUser Details:\n- **Name:** ${request.name}\n- **Address:** ${request.address}\n- **Service:** ${employee.Server}\n\nPlease ensure timely arrival.\n\nBest Regards,\nYour Company Name`
       }
 
-      await fetch(`http://localhost:8080/send-email`, {
+      await fetch(`${process.env.REACT_APP_API_BASE_URL}send-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(professionalEmailData)
@@ -140,7 +145,7 @@ function Accept () {
     })
 
     const updateResponse = await fetch(
-      `http://localhost:8080/update-request-status`,
+      `${process.env.REACT_APP_API_BASE_URL}update-request-status`,
       {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -152,12 +157,12 @@ function Accept () {
     console.log('Request Status Updated:', updateData)
 
     if (updateResponse.ok) {
-      alert('Request status updated to Work in Progress!')
+      toast.success('Request status updated successfully!', { position: 'top-right' })
     } else {
-      alert('Failed to update request status.')
+      toast.error('Failed to update request status.', { position: 'top-right' })
     }
 
-    // navigate('/admin')
+     navigate('/admin')
 
     // try {
     //     const response = await fetch("${process.env.REACT_APP_API_BASE_URL}send-pro", {
@@ -180,6 +185,7 @@ function Accept () {
   return (
     <div style={styles.container}>
       {/* Left Side - Request Details */}
+      <ToastContainer />
       <div style={styles.card}>
         <h2 style={styles.heading}>Request Details</h2>
         <div style={styles.infoBox}>

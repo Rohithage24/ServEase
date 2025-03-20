@@ -28,9 +28,9 @@ function Serves() {
     {
       id: 3,
       image: "image/s3.png",
-      title: "Air Condition Maintainance",
+      title: "Air Conditioner Maintainance",
       description: "Furniture repairs, custom woodwork, and installations.",
-      link: "Air Condition Maintainance",
+      link: "Air Conditioner Maintainance",
       Fees: 800
 
     },

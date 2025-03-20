@@ -9,7 +9,7 @@ const Payment = () => {
   const [message, setMessage] = useState("");
   const [paymentConfirmed, setPaymentConfirmed] = useState(false);
 
-  // Replace with your actual UPI ID
+  //  UPI ID
   const UPI_ID = "8788640727@ptsbi";
   const AMOUNT =  requestData.price || "0";
   const TRANSACTION_ID = `TXN${Date.now()}`;
@@ -17,7 +17,7 @@ const Payment = () => {
   const NOTE = "Service Payment via QR Code";
 
   // Generate UPI QR Code URL
-  const qrCodeURL = `upi://pay?pa=${UPI_ID}&pn=Merchant&tid=${TRANSACTION_ID}&tr=${ORDER_ID}&tn=${NOTE}&am=${AMOUNT}&cu=INR`;
+  const qrCodeURL = `upi://pay?pa=${UPI_ID}&pn=Servease&tid=${TRANSACTION_ID}&tr=${ORDER_ID}&tn=${NOTE}&am=${AMOUNT}&cu=INR`;
 
   const handleConfirmPayment = async () => {
     if (!paymentConfirmed) {

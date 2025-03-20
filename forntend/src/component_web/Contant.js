@@ -21,7 +21,7 @@ function Contant() {
         try {
           console.log(process.env.REACT_APP_API_BASE_URL);
           
-          const response = await fetch(`http://localhost:8080/getRequestUser/${id} `, {
+          const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}getRequestUser/${id} `, {
             method: "GET",
             headers: { "Content-Type": "application/json" },
           });
@@ -79,6 +79,7 @@ function Contant() {
         <div className="Feedback">
           {/* <h2>Server on Working</h2> */}
           {request?.filter((request) => request.status === "accepted")?.map((request) =>  (
+            
               <div key={request._id} className="service-box">
                 <h5>{request.serves} is Working</h5>
                 <p><strong>Name:</strong> {request.name}</p>
@@ -111,10 +112,10 @@ function Contant() {
                         more making service booking easy and reliable.{" "}
                       </p>
                       <div className="btn-box">
-                        <a href="" className=" btn btn-1 ">
+                        <Link to="/about" className=" btn btn-1 ">
                           Read More
-                        </a>
-                        <Link  className="btn btn-2">
+                        </Link>
+                        <Link to="/contact"className="btn btn-2">
                           Contact Us
                         </Link>
                       </div>

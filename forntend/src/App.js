@@ -23,6 +23,7 @@ import Payment from "./component_web/Payment";
 import PaymentSuccess from "./component_web/PaymentSuccess";
 import Accept from "./admin_app/Accept";
 import FeedbackForm from "./page/FeedbackForm";
+// import Feedback from "./admin_app/Feedback";
 
 // import EditEmp from "./Employee/EditEmp";
 
@@ -76,6 +77,8 @@ const AppWrapper = () => {
         {/* Admin Routes */}
         <Route path="/admin/*" element={<Admin />} />
         <Route path="/Employee/*" element={<EmployeD />} />
+        {/* <Route path="/admin/Feedback/:id" element={<Feedback />} /> */}
+
         {/* Admin Routes */}
         {/* <Route path="/admin" element={<Admin />} /> */}
         {/* <PrivateRoute></PrivateRoute> */}
