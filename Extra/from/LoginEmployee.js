@@ -16,7 +16,7 @@ const LoginEmployee = () => {
 
 
     try {
-      const response = await fetch(`https://servease-backend.onrender.com/EmployoLogin`, {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}EmployoLogin`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

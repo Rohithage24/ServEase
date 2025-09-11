@@ -105,7 +105,7 @@ const FeedbackForm = () => {
     console.log('Submitting Feedback:', newFeedback)
   
     try {
-      const response = await fetch('${process.env.REACT_APP_API_BASE_URL}feedback', {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}feedback`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newFeedback)

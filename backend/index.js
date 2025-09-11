@@ -68,6 +68,7 @@ server.get("/getRequestUser/:id", WorkRe.getRequestByuser);
 
 // Feed back
 server.post("/feedback",FeedBack.feedbackpo );
+server.get("/getfeed/:userID" , FeedBack.getfeedback)
 
 // ➤ Submit feedback
 server.get("/getFeed",FeedBack.getAllfeedback );
